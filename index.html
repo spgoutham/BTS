@@ -7,34 +7,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 <style>
   body {
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial, sans-serif;
     background: #FFFCF2;
     margin: 0;
     padding: 30px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
   }
   .logo {
-    width: 200px; 
+    width: 200px;
     height: 200px;
-    margin-bottom: 2px; /* Reduced space below the logo */
+    margin: 0 auto; /* Centers the logo */
+    display: block;
   }
-  .small-heading {
-    font-size: 1.5rem;
-    color: #8A2BE2; 
+  h1.small-heading {
+    font-family: 'Poppins', sans-serif;
+    color: #8A2BE2; /* Color adjustment for visibility */
     font-weight: normal;
-    margin: 5px 0 5px; /* Reduced space above the heading */
+    font-size: 1.5rem;
+    margin: 10px 0; /* Space between titles */
   }
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 5px; /* Space at the bottom of the table */
   }
   th, td {
     padding: 8px;
-    text-align: center; /* Center text in the table */
+    text-align: left;
     border-bottom: 1px solid #ddd;
   }
   th {
@@ -42,10 +40,9 @@
     color: white;
   }
 
-  /* Shimmer effects */
   @keyframes goldShimmer {
     0%, 100% { color: black; }
-    50% { color: gold; }
+    50% { color: gold; } /* Modify the color for gold shimmer */
   }
 
   @keyframes redShimmer {
@@ -55,7 +52,7 @@
 
   @keyframes blueShimmer {
     0%, 100% { color: black; }
-    50% { color: blue; }
+    50% { color: blue; } /* Modify the color for blue shimmer */
   }
 
   .gold {
@@ -72,7 +69,7 @@
 </style>
 </head>
 <body>
-  <img src="logo.png" alt="Logo" class="logo"> <!-- Centered logo -->
+  <img src="logo.png" alt="Logo" class="logo">
   <h1 class="small-heading">Current Rankings</h1>
   <table id="leaderboard">
     <tr>
@@ -111,6 +108,9 @@
 
       teams.forEach((team, index) => {
         if (team.total !== lastScore) {
+          if (index > 0) { // If not the first team, increment the rank
+            rank = index + 1;
+          }
           lastScore = team.total;
           displayRank = rank;
         }
@@ -131,3 +131,4 @@
   </script>
 </body>
 </html>
+
