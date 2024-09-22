@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>BTS WAR</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #FFFCF2;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+  h1.shimmer {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    background: linear-gradient(to right, #ff8c00 20%, #FFD700 50%, #ff8c00 80%);
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    animation: shimmer 5s linear infinite;
+  }
+  .small-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #8A2BE2;
+    margin: 20px auto;
+  }
+  @keyframes shimmer {
+    0% {background-position: -200% center;}
+    100% {background-position: 200% center;}
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    background-color: #00BFFF;
+    color: white;
+  }
+  .gold, .red, .blue {
+    animation: colorShimmer 3s linear infinite;
+  }
+  @keyframes goldShimmer {
+    0%, 100% {color: black;}
+    50% {color: gold;}
+  }
+  @keyframes redShimmer {
+    0%, 100% {color: black;}
+    50% {color: red;}
+  }
+  @keyframes blueShimmer {
+    0%, 100% {color: black;}
+    50% {color: blue;}
+  }
+  .gold { animation-name: goldShimmer; }
+  .red { animation-name: redShimmer; }
+  .blue { animation-name: blueShimmer; }
+</style>
+</head>
+<body>
+<h1 class="shimmer">BTS WAR Endru Alaikapadum PORR</h1>
+<h1 class="small-heading">Current Rankings</h1>
+<table id="leaderboard">
+  <tr>
+    <th>Rank</th>
+    <th>Team Name</th>
+    <th>Erangel</th>
+    <th>Vikendi</th>
+    <th>Miramar</th>
+    <th>Sanhok</th>
+    <th>Total Points</th>
+  </tr>
+</table>
+
+<script>
+  let teams = [
+    { name: "Team Alpha", erangel: 30, vikendi: 20, miramar: 25, sanhok: 35 },
+    { name: "Team Beta", erangel: 40, vikendi: 15, miramar: 30, sanhok: 20 },
+    { name: "Team Gamma", erangel: 20, vikendi: 25, miramar: 35, sanhok: 40 },
+    { name: "Team Grudge", erangel: 20, vikendi: 26, miramar: 35, sanhok: 40 }
+  ];
+
+  function updateLeaderboard() {
+    teams.forEach(team => {
+      team.total = team.erangel + team.vikendi + team.miramar + team.sanhok; // Calculate total points
+    });
+    teams.sort((a, b) => b.total - a.total); // Sort teams by total points
+
+    const table = document.getElementById('leaderboard');
+    table.innerHTML = '<tr><th>Rank</th><th>Team Name</th><th>Erangel</th><th>Vikendi</th><th>Miramar</th><th>Sanhok</th><th>Total Points</th></tr>';
+
+    teams.forEach((team, index) => {
+      const row = table.insertRow(-1);
+      const rankCell = row.insertCell(0);
+      const nameCell = row.insertCell(1);
+      const erangelCell = row.insertCell(2);
+      const vikendiCell = row.insertCell(3);
+      const miramarCell = row.insertCell(4);
+      const sanhokCell = row.insertCell(5);
+      const totalCell = row.insertCell(6);
+
+      rankCell.innerHTML = index + 1;
+      nameCell.innerHTML = team.name;
+      erangelCell.innerHTML = team.erangel;
+      vikendiCell.innerHTML = team.vikendi;
+      miramarCell.innerHTML = team.miramar;
+      sanhokCell.innerHTML = team.sanhok;
+      totalCell.innerHTML = team.total;
+
+      // Applying color based on rank
+      if (index === 0) {
+        [rankCell, nameCell, erangelCell, vikendiCell, miramarCell, sanhokCell, totalCell].forEach(cell => cell.classList.add('gold'));
+      } else if (index === 1) {
+        [rankCell, nameCell, erangelCell, vikendiCell, miramarCell, sanhokCell, totalCell].forEach(cell => cell.classList.add('red'));
+      } else if (index === 2) {
+        [rankCell, nameCell, erangelCell, vikendiCell, miramarCell, sanhokCell, totalCell].forEach(cell => cell.classList.add('blue'));
+      }
+    });
+  }
+
+  updateLeaderboard();
+</script>
+</body>
+</html>
