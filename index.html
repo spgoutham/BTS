@@ -16,15 +16,15 @@
   .logo {
     width: 200px;
     height: 200px;
-    margin: 0 auto; /* Centers the logo */
+    margin: 0 auto;
     display: block;
   }
   h1.small-heading {
     font-family: 'Poppins', sans-serif;
-    color: #8A2BE2; /* Color adjustment for visibility */
+    color: #8A2BE2;
     font-weight: normal;
     font-size: 1.5rem;
-    margin: 10px 0; /* Space between titles */
+    margin: 10px 0;
   }
   table {
     width: 100%;
@@ -42,7 +42,7 @@
 
   @keyframes goldShimmer {
     0%, 100% { color: black; }
-    50% { color: gold; } /* Modify the color for gold shimmer */
+    50% { color: gold; }
   }
 
   @keyframes redShimmer {
@@ -52,7 +52,7 @@
 
   @keyframes blueShimmer {
     0%, 100% { color: black; }
-    50% { color: blue; } /* Modify the color for blue shimmer */
+    50% { color: blue; }
   }
 
   .gold {
@@ -65,6 +65,24 @@
 
   .blue {
     animation: blueShimmer 3s linear infinite;
+  }
+
+  /* Mobile-specific styles */
+  @media (max-width: 600px) {
+    body {
+      padding: 10px;
+    }
+    .logo {
+      width: 150px;
+      height: 150px;
+    }
+    h1.small-heading {
+      font-size: 1.2rem;
+    }
+    th, td {
+      font-size: 12px;
+      padding: 6px;
+    }
   }
 </style>
 </head>
@@ -131,4 +149,3 @@
   </script>
 </body>
 </html>
-
