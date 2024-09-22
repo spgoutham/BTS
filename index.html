@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 <style>
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: #FFFCF2;
     margin: 0;
     padding: 30px;
@@ -19,18 +19,18 @@
   .logo {
     width: 200px; 
     height: 200px;
-    margin-bottom: 20px; /* Space below the logo */
+    margin-bottom: 2px; /* Reduced space below the logo */
   }
   .small-heading {
     font-size: 1.5rem;
     color: #8A2BE2; 
     font-weight: normal;
-    margin: 10px 0 20px; /* Space below the heading */
+    margin: 5px 0 5px; /* Reduced space above the heading */
   }
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px; /* Space at the bottom of the table */
+    margin-bottom: 5px; /* Space at the bottom of the table */
   }
   th, td {
     padding: 8px;
@@ -104,19 +104,20 @@
       const table = document.getElementById('leaderboard');
       table.innerHTML = '<tr><th>Rank</th><th>Team Name</th><th>Erangel</th><th>Vikendi</th><th>Miramar</th><th>Sanhok</th><th>Total Points</th></tr>';
 
+      let highestScore = teams[0].total; // The highest score after sorting
       let lastScore = null;
+      let rank = 1; // Start ranking at 1
       let displayRank = 1; // Display rank starts at 1
 
       teams.forEach((team, index) => {
         if (team.total !== lastScore) {
           lastScore = team.total;
-          displayRank = index + 1; // Update displayRank based on sorted index
+          displayRank = rank;
         }
-
         const row = table.insertRow(-1);
         row.innerHTML = `<td>${displayRank}</td><td>${team.name}</td><td>${team.erangel}</td><td>${team.vikendi}</td><td>${team.miramar}</td><td>${team.sanhok}</td><td>${team.total}</td>`;
 
-        if (displayRank === 1) {
+        if (team.total === highestScore) {
           row.className = 'gold'; // Apply gold to all teams with the highest score
         } else if (displayRank === 2) {
           row.className = 'red'; // Apply red to rank 2
