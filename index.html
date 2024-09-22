@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BTS WAR</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -11,10 +11,15 @@
     background: #FFFCF2;
     margin: 0;
     padding: 20px;
-    text-align: center;
+    text-align: center; /* Ensures text centers in the body */
+  }
+  h1.shimmer, .small-heading {
+    font-family: 'Poppins', sans-serif;
+    color: #8A2BE2;
+    text-align: center; /* Centering the text */
+    margin: 0 auto; /* Ensuring it's centered */
   }
   h1.shimmer {
-    font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
     font-weight: 600;
     background: linear-gradient(to right, #ff8c00 20%, #FFD700 50%, #ff8c00 80%);
@@ -27,11 +32,10 @@
     animation: shimmer 5s linear infinite;
   }
   .small-heading {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Adjusted size */
     font-weight: 400;
-    color: #8A2BE2;
-    margin: 20px auto;
+    color: #8A2BE2; /* Violet color */
+    margin: 20px auto; /* Adding margin to ensure space */
   }
   @keyframes shimmer {
     0% {background-position: -200% center;}
