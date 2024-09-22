@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>AIC Leaderboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #FFFCF2;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+   
+  h1.shimmer {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      background: linear-gradient(to right, #ff8c00 20%, #FFD700 50%, #ff8c00 80%);
+      background-size: 200% auto;
+      color: #fff;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-fill-color: transparent;
+      animation: shimmer 5s linear infinite;
+      text-align: center; /* Centering the text */
+      margin: 0 auto; /* Ensuring it's centered */
+    }
+  
+  .small-heading {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem; /* Adjusted size */
+      font-weight: 400;
+      color: #8A2BE2; /* Violet color */
+      text-align: center;
+      margin: 20px auto; /* Adding margin to ensure space */
+    }
+
+  @keyframes shimmer {
+      0% {
+        background-position: -200% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    background-color: #00BFFF;
+    color: white;
+  }
+  @keyframes goldShimmer {
+    0%, 100% {
+      color: black;
+    }
+    50% {
+      color: #b8860b; /* Dark gold color for 1st rank */
+    }
+  }
+  @keyframes redShimmer {
+    0%, 100% {
+      color: black;
+    }
+    50% {
+      color: red; /* Red color for 2nd rank */
+    }
+  }
+  @keyframes blueShimmer {
+    0%, 100% {
+      color: black;
+    }
+    50% {
+      color: #00BFFF; /* Light blue color for 3rd rank */
+    }
+  }
+  .gold {
+    animation: goldShimmer 3s linear infinite;
+  }
+  .red {
+    animation: redShimmer 3s linear infinite;
+  }
+  .blue {
+    animation: blueShimmer 3s linear infinite;
+  }
+</style>
+</head>
+<body>
+<h1 class="shimmer">BUILD FROM SCRATCH</h1>
+<h1 class="small-heading">Round 1 Leaderboard</h1>
+<table id="leaderboard">
+  <tr>
+    <th>Rank</th>
+    <th>Team Name</th>
+    <th>Branch</th>
+    <th>Points</th>
+  </tr>
+</table>
+
+<script>
+  let teams = [
+    { name: "TAMILSELVAN D V", branch: "AI&DS 2", points: 0 },
+    { name: "Vishnu vardhan", branch: "Ai&ds 2", points: 0 },
+    { name: "Catherine J", branch: "CSE - 1", points: 0},
+    { name: "JAYAKARTHIKEYAN", branch: "Cse 2", points: 0 },
+    { name: "Balamurugan", branch: "CSE-1", points: 0 },
+    { name: "Yazhini k", branch: "AIDS 2", points: 0 },
+    { name: "Vijay B", branch: "Artificial intelligence and data science", points: 0 },
+    { name: "SURYA PRAKASH M", branch: "AI & DS", points: 0 },
+    { name: "BHARATH M", branch: "CSE- I", points: 0 },
+    { name: "Harssini. G", branch: "CSE1", points: 0 },
+    { name: "Hari prakash S", branch: "Cse-1", points: 0 },
+    { name: "AAFIYA THAHSEEN S", branch: "CSE-1", points: 0 },
+    { name: "MUMMANENI NIVAS", branch: "CSE-2", points: 0 },
+    { name: "Padmapriya S", branch: "AIDS 2", points: 0 },
+    { name: "Catherine J", branch: "CSE - 1", points: 0 },
+    { name: "SHARMILI.P", branch: "AI and DS - 2", points: 0 },
+    { name: "SHAILESH AG", branch: "CSE-3", points: 0 },
+    { name: "Tamilselvi", branch: "Ai &ds 2", points: 0 },
+    { name: "YUVEDHA D", branch: "AIDS-2", points: 0 },
+    { name: "Pradeep", branch: "AIDS 2", points: 0 },
+    { name: "Mummaneni Chethana", branch: "Cse-2", points: 0 },
+    { name: "ELAKIYA SREE P", branch: "CSE 1", points: 0 },
+    { name: "F. JERIN WILLIAMS", branch: "Cse - 2", points: 0 },
+    { name: "Yazhini k", branch: "AI and DS 2", points: 0 },
+    { name: "SHALINI R", branch: "AI DS-2", points: 0 },
+    { name: "J.yeshwanth davidson", branch: "Ai&ds-2", points: 0 },
+    { name: "Lithilyaa S", branch: "BE CSE-2", points: 0 },
+    { name: "Karthikeyan", branch: "CSE-2", points: 0 },
+    { name: "MOGAN G", branch: "IT 1", points: 0 },
+    { name: "S Hari haran", branch: "CSE 1", points: 0 },
+    { name: "Mohanasundaram", branch: "Cse", points: 0 },
+    { name: "S.R.Aishwarya", branch: "CSE -1", points: 0 },
+    { name: "MATHIYAZHAGAN M", branch: "CSE - 2", points: 0 },
+    { name: "Manoj G R", branch: "Cse 2", points: 0 },
+    { name: "ANUJA S", branch: "CSE 1", points: 0 },
+    { name: "R. Tamilarasi", branch: "AI and DS 2", points: 0 },
+    { name: "Aswin Kumar", branch: "IT-1", points: 0 },
+    { name: "Adlin Florida. D", branch: "B.tech it-1", points: 0 },
+    { name: "Sakthivel U", branch: "AI and DS - II", points: 0 },
+    { name: "Akshara. S", branch: "IT-1", points: 0 },
+    { name: "Geetha Devi. A", branch: "B.TECH.IT - 1", points: 0 },
+    { name: "MAHESWARI S", branch: "AI&DS-1", points: 0 },
+    { name: "MOHITHA M", branch: "Ai and Ds-1", points: 0 },
+    { name: "Cibi Vijesh V", branch: "AI &DS -1", points: 0 },
+    { name: "Nandhish.R", branch: "IT-2", points: 0 },
+    { name: "SHALINI S", branch: "AI & DS - 2", points: 0 },
+    { name: "Jeevan", branch: "CSE-2", points: 0 },
+    { name: "Animamalar.P", branch: "CSE 1", points: 0 },
+    { name: "BHAGYASRI N", branch: "Computer Science and Engineering CSE-1", points: 0 },
+    { name: "Haresh R Y", branch: "AI&DS 1", points: 0 },
+    { name: "Michael Gautham", branch: "CSE 2", points: 0 },
+    { name: "G.Priyadharshini", branch: "AI DS-2", points: 0 },
+    { name: "Gowsiga V R", branch: "CSE 1", points: 0 },
+    { name: "Mohamed afsar .u", branch: "IT 1", points: 0 },
+    { name: "JAYASRI.B.N", branch: "Cse-2", points: 0 },
+    { name: "Yogasiri", branch: "Ai&ds-2", points: 0 },
+    { name: "POOVIZHIYAN S", branch: "AI DS -2", points: 0 },
+    { name: "Pavithra suresh", branch: "Ai & ds", points: 0 },
+    { name: "BARAGATH REHANA.M", branch: "CSE-1", points: 0 },
+    { name: "REENA JAMUNA MARY N", branch: "AI&DS-2", points: 0 },
+    { name: "Nandhini.v", branch: "B TECH IT - 2", points: 0 },
+    { name: "DARILLYN DARSHA S", branch: "Btech IT", points: 0 },
+    { name: "D.THAMIZHVAANAN", branch: "AI DS SECTION 2", points: 0 },
+    { name: "Krishna kumar k", branch: "Cse(2)", points: 0 },
+    { name: "JAWITH BASHA J", branch: "CSE 2", points: 0 },
+    { name: "Jino J A", branch: "AI & DS 1", points: 0 },
+    { name: "SUREKA. R", branch: "AI&DS", points: 0 },
+    { name: "J. Yeshwanth davidson", branch: "Aids-2", points: 0 },
+    { name: "HARIHARAN.V", branch: "AI&DS-1", points: 0 },
+    { name: "Lithilyaa S", branch: "CSE-2", points: 0 },
+    { name: "N.Balaji", branch: "Btech iT-1", points: 0 }
+    
+    
+  ];
+
+  function addPoints(teamName, pointsToAdd) {
+    const team = teams.find(t => t.name === teamName);
+    if (team) {
+      team.points += pointsToAdd;
+      updateLeaderboard();
+    }
+  }
+
+  function updateLeaderboard() {
+  teams.sort((a, b) => b.points - a.points);
+  const table = document.getElementById('leaderboard');
+  table.innerHTML = '<tr><th>Rank</th><th>Team Name</th><th>Branch</th><th>Points</th></tr>';
+
+  let lastScore = -1;
+  let lastRank = 0;
+  let rankCounter = 0;
+
+  teams.forEach((team) => {
+    rankCounter++; // Increment for each team
+    if (team.points !== lastScore) {
+      lastRank = rankCounter;
+      lastScore = team.points;
+    }
+
+    const row = table.insertRow(-1);
+    const rankCell = row.insertCell(0);
+    const nameCell = row.insertCell(1);
+    const branchCell = row.insertCell(2);
+    const pointsCell = row.insertCell(3);
+    rankCell.innerHTML = lastRank;
+    nameCell.innerHTML = team.name;
+    branchCell.innerHTML = team.branch;
+    pointsCell.innerHTML = team.points;
+
+    if (lastRank === 1) {
+        rankCell.classList.add('gold');
+        nameCell.classList.add('gold');
+        branchCell.classList.add('gold');
+        pointsCell.classList.add('gold');
+      } else if (lastRank === 2) {
+        rankCell.classList.add('red');
+        nameCell.classList.add('red');
+        branchCell.classList.add('red');
+        pointsCell.classList.add('red');
+      } else if (lastRank === 3) {
+        rankCell.classList.add('blue');
+        nameCell.classList.add('blue');
+        branchCell.classList.add('blue');
+        pointsCell.classList.add('blue');
+      }
+    });
+  }
+
+
+  updateLeaderboard();
+</script>
+</body>
+</html>
