@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Results</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #FFEDCC;
+      margin: 0;
+      padding: 30px;
+      text-align: center;
+    }
+    h1 {
+      color: #8A2BE2;
+      font-size: 2.5rem;
+    }
+    .week-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .week-links a, .week-links span {
+      margin: 10px 0;
+      font-size: 1.5rem;
+      color: #00BFFF;
+      text-decoration: none;
+      border: 2px solid #00BFFF;
+      padding: 10px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    .week-links a:hover {
+      background-color: #00BFFF;
+      color: white;
+    }
+    .week-links span {
+      color: gray;
+      border-color: gray;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h1>Select a Week</h1>
+  <div class="week-links">
+    <a href="week1.html">Week 1</a>
+    
+    <!-- Non-clickable Weeks 3 to 8 -->
+    <span>Week 2 (Upcoming)</span>
+    <span>Week 3 (Upcoming)</span>
+    <span>Week 4 (Upcoming)</span>
+    <span>Week 5 (Upcoming)</span>
+    <span>Week 6 (Upcoming)</span>
+    <span>Week 7 (Upcoming)</span>
+    <span>Week 8 (Upcoming)</span>
+  </div>
+</body>
+</html>
