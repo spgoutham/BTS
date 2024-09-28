@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #FFFCF2;
+      background: #FFEDCC; /* Light orange */
       margin: 0;
       padding: 30px;
       text-align: center;
@@ -37,12 +37,26 @@
       width: 50%;
       text-align: center;
     }
+    @keyframes redShimmer {
+      0%, 100% { color: black; }
+      50% { color: red; }
+    }
+
+    /* Apply shimmer effect to the last 4 rows of each table */
+    table tr:nth-last-child(-n+4) {
+      animation: redShimmer 2s linear infinite;
+    }
+    table tr:nth-child(3) {
+      background-color: #00BFFF;
+      color: white;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <h1>Week 2 Results</h1>
 
-  <!-- Example Table for Team TBA -->
+  <!-- Visible Table for Team TBA -->
   <table>
     <tr>
       <td colspan="2">WEEK 2 | SATURDAY | MATCH 1 - Orange</td>
@@ -72,6 +86,269 @@
     </tr>
   </table>
 
+  <!-- Remaining tables are commented out -->
+  <!--
+  <table>
+    <tr>
+      <td colspan="2">WEEK 1 | SATURDAY | MATCH 2 - MIRAMAR</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="font-weight: bold;">M-BTS</td>
+    </tr>
+    <tr>
+      <td class="left">Player Name</td>
+      <td class="right">Kills</td>
+    </tr>
+    <tr>
+      <td class="left">MSOB</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td class="left">STR</td>
+      <td class="right">5</td>
+    </tr>
+    <tr>
+      <td class="left">Mutton rice</td>
+      <td class="right">4</td>
+    </tr>
+    <tr>
+      <td class="left">YT Asar</td>
+      <td class="right">4</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td colspan="2">WEEK 1 | SATURDAY | MATCH 3 - Sanhok</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="font-weight: bold;">Jord-BTS</td>
+    </tr>
+    <tr>
+      <td class="left">Player Name</td>
+      <td class="right">Kills</td>
+    </tr>
+    <tr>
+      <td class="left">Jordan</td>
+      <td class="right">6</td>
+    </tr>
+    <tr>
+      <td class="left">Dora OP</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td class="left">Goat</td>
+      <td class="right">4</td>
+    </tr>
+    <tr>
+      <td class="left">YT Romeo</td>
+      <td class="right">2</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td colspan="2">WEEK 1 | SATURDAY | MATCH 4 - Miramar</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="font-weight: bold;">H - BTS</td>
+    </tr>
+    <tr>
+      <td class="left">Player Name</td>
+      <td class="right">Kills</td>
+    </tr>
+    <tr>
+      <td class="left">Rodrick</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td class="left">Totto</td>
+      <td class="right">3</td>
+    </tr>
+    <tr>
+      <td class="left">Zeus OG</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td class="left">Magician YT</td>
+      <td class="right">1</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td colspan="2">WEEK 1 | SATURDAY | MATCH 5 - Erangle</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="font-weight: bold;">BTS</td>
+    </tr>
+    <tr>
+      <td class="left">Player Name</td>
+      <td class="right">Kills</td>
+    </tr>
+    <tr>
+      <td class="left">Ghost Op</td>
+      <td class="right">1</td>
+    </tr>
+    <tr>
+      <td class="left">Sai Op</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td class="left">Troll Op</td>
+      <td class="right">5</td>
+    </tr>
+    <tr>
+      <td class="left">Tom</td>
+      <td class="right">3</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td colspan="2">WEEK 1 | SUNDAY | MATCH 6 - Erangle</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="font-weight: bold;">SO-BTS</td>
+    </tr>
+    <tr>
+      <td class="left">Player</td>
+      <td class="right">Kills</td>
+    </tr>
+    <tr>
+      <td class="left">Choco</td>
+      <td class="right">7</td>
+    </tr>
+    <tr>
+      <td class="left">Eswa</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td class="left">Jeeva</td>
+      <td class="right">3</td>
+    </tr>
+    <tr>
+      <td class="left">Ivory</td>
+      <td class="right">1</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td colspan="2">WEEK 1 | SUNDAY | MATCH 7 - Miramar</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="font-weight: bold;">M-BTS</td>
+    </tr>
+    <tr>
+      <td class="left">Player Name</td>
+      <td class="right">Kills</td>
+    </tr>
+    <tr>
+      <td class="left">MSOB</td>
+      <td class="right">3</td>
+    </tr>
+    <tr>
+      <td class="left">STR</td>
+      <td class="right">0</td>
+    </tr>
+    <tr>
+      <td class="left">Mutton rice</td>
+      <td class="right">1</td>
+    </tr>
+    <tr>
+      <td class="left">YT Asar</td>
+      <td class="right">3</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td colspan="2">WEEK 1 | SUNDAY | MATCH 8 - Vikendi</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="font-weight: bold;">BTS</td>
+    </tr>
+    <tr>
+      <td class="left">Player Name</td>
+      <td class="right">Kills</td>
+    </tr>
+    <tr>
+      <td class="left">Ghost Op</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td class="left">Sai Op</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td class="left">Troll Op</td>
+      <td class="right">10</td>
+    </tr>
+    <tr>
+      <td class="left">Tom</td>
+      <td class="right">1</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td colspan="2">WEEK 1 | SUNDAY | MATCH 9 - Miramar</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="font-weight: bold;">BTS</td>
+    </tr>
+    <tr>
+      <td class="left">Player Name</td>
+      <td class="right">Kills</td>
+    </tr>
+    <tr>
+      <td class="left">Ghost Op</td>
+      <td class="right">0</td>
+    </tr>
+    <tr>
+      <td class="left">Sai Op</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td class="left">Troll Op</td>
+      <td class="right">6</td>
+    </tr>
+    <tr>
+      <td class="left">Tom</td>
+      <td class="right">3</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td colspan="2">WEEK 1 | SUNDAY | MATCH 10 - Erangle</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="font-weight: bold;">M-BTS</td>
+    </tr>
+    <tr>
+      <td class="left">Player Name</td>
+      <td class="right">Kills</td>
+    </tr>
+    <tr>
+      <td class="left">MSOB</td>
+      <td class="right">1</td>
+    </tr>
+    <tr>
+      <td class="left">STR</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td class="left">Mutton rice</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td class="left">YT Asar</td>
+      <td class="right">6</td>
+    </tr>
+  </table>
+  -->
 
   <a href="weeks.html" style="color: #00BFFF; text-decoration: underline;">Back to Weekly Results</a>
 </body>
