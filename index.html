@@ -106,8 +106,8 @@
       background-color: red;
     }
 
-    .underline.blue a::after {
-      background-color: blue;
+    .underline.green a::after {
+      background-color: green;
     }
 
     .underline a:hover::after {
@@ -126,8 +126,8 @@
       animation: redShimmer 3s linear infinite;
     }
 
-    .blue a {
-      color: blue;
+    .green a {
+      color: green;
       animation: blueShimmer 3s linear infinite;
     }
 
@@ -203,13 +203,13 @@ function updateLeaderboard() {
     row.innerHTML = `<td>${displayRank}</td><td><a href="${team.page}">${team.name}</a></td><td>${team.erangel}</td><td>${team.vikendi}</td><td>${team.miramar}</td><td>${team.sanhok}</td><td>${team.total}</td>`;
 
     // Apply shimmer effect only to the top 3 ranks
-    row.classList.remove('gold', 'red', 'blue', 'underline'); // Reset any previous classes
+    row.classList.remove('gold', 'red', 'green', 'underline'); // Reset any previous classes
     if (displayRank === 1) {
       row.classList.add('gold', 'underline');
     } else if (displayRank === 2) {
       row.classList.add('red', 'underline');
     } else if (displayRank === 3) {
-      row.classList.add('blue', 'underline');
+      row.classList.add('green', 'underline');
     }
   });
 }
