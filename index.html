@@ -86,7 +86,7 @@
 
     .underline.gold a::after,
     .underline.red a::after,
-    .underline.blue a::after {
+    .underline.green a::after {
       content: '';
       position: absolute;
       left: 0;
@@ -128,7 +128,7 @@
 
     .green a {
       color: green;
-      animation: blueShimmer 3s linear infinite;
+      animation: greenShimmer 3s linear infinite;
     }
 
     @media (max-width: 600px) {
@@ -173,7 +173,8 @@
       { name: "M-BTS", erangel: 1, vikendi: 0, miramar: 2, sanhok: 0, page: 'mbts.html' },
       { name: "JORD-BTS", erangel: 0, vikendi: 0, miramar: 0, sanhok: 1, page: 'jordbts.html' },
       { name: "H-BTS", erangel: 0, vikendi: 0, miramar: 1, sanhok: 0, page: 'hbts.html' },
-      { name: "BTS", erangel: 2, vikendi: 1, miramar: 1, sanhok: 0, page: 'bts.html' }
+      { name: "BTS", erangel: 2, vikendi: 1, miramar: 1, sanhok: 0, page: 'bts.html' },
+      { name: "Bloody", erangel: 0, vikendi: 0, miramar: 1, sanhok: 0, page: 'bloody.html' }
     ];
 function updateLeaderboard() {
   teams.forEach(team => {
