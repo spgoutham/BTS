@@ -82,11 +82,13 @@
     a {
       text-decoration: none;
       position: relative;
+      color: black;
     }
 
     .underline.gold a::after,
     .underline.red a::after,
-    .underline.green a::after {
+    .underline.green a::after,
+    .underline.black a::after {
       content: '';
       position: absolute;
       left: 0;
@@ -108,6 +110,10 @@
 
     .underline.green a::after {
       background-color: green;
+    }
+
+    .underline.black a::after {
+      background-color: black;
     }
 
     .underline a:hover::after {
@@ -176,45 +182,47 @@
       { name: "BTS", erangel: 2, vikendi: 1, miramar: 1, sanhok: 0, page: 'bts.html' },
       { name: "Bloody", erangel: 0, vikendi: 0, miramar: 1, sanhok: 0, page: 'bloody.html' }
     ];
-function updateLeaderboard() {
-  teams.forEach(team => {
-    team.total = team.erangel + team.vikendi + team.miramar + team.sanhok;
-  });
-  teams.sort((a, b) => b.total - a.total);
 
-  const table = document.getElementById('leaderboard');
-  table.innerHTML = '<tr><th>Rank</th><th>Team Name</th><th>Erangel</th><th>Vikendi</th><th>Miramar</th><th>Sanhok</th><th>Total Points</th></tr>';
+    function updateLeaderboard() {
+      teams.forEach(team => {
+        team.total = team.erangel + team.vikendi + team.miramar + team.sanhok;
+      });
+      teams.sort((a, b) => b.total - a.total);
 
-  let highestScore = teams[0].total;
-  let lastScore = null;
-  let rank = 1;
-  let displayRank = 1;
+      const table = document.getElementById('leaderboard');
+      table.innerHTML = '<tr><th>Rank</th><th>Team Name</th><th>Erangel</th><th>Vikendi</th><th>Miramar</th><th>Sanhok</th><th>Total Points</th></tr>';
 
-  teams.forEach((team, index) => {
-    if (team.total !== lastScore) {
-      if (index > 0) {
-        rank = index + 1;
-      }
-      lastScore = team.total;
-      displayRank = rank;
+      let lastScore = null;
+      let rank = 1;
+      let displayRank = 1;
+
+      teams.forEach((team, index) => {
+        if (team.total !== lastScore) {
+          if (index > 0) {
+            rank = index + 1;
+          }
+          lastScore = team.total;
+          displayRank = rank;
+        }
+
+        // Create a new table row
+        const row = table.insertRow(-1);
+        row.innerHTML = `<td>${displayRank}</td><td><a href="${team.page}">${team.name}</a></td><td>${team.erangel}</td><td>${team.vikendi}</td><td>${team.miramar}</td><td>${team.sanhok}</td><td>${team.total}</td>`;
+
+        // Apply shimmer and color effect for the top 3 ranks
+        row.classList.remove('gold', 'red', 'green', 'black', 'underline'); // Reset any previous classes
+        if (displayRank === 1) {
+          row.classList.add('gold', 'underline');
+        } else if (displayRank === 2) {
+          row.classList.add('red', 'underline');
+        } else if (displayRank === 3) {
+          row.classList.add('green', 'underline');
+        } else {
+          // Apply black underline for ranks 4 and below
+          row.classList.add('black', 'underline');
+        }
+      });
     }
-
-    // Create a new table row
-    const row = table.insertRow(-1);
-    row.innerHTML = `<td>${displayRank}</td><td><a href="${team.page}">${team.name}</a></td><td>${team.erangel}</td><td>${team.vikendi}</td><td>${team.miramar}</td><td>${team.sanhok}</td><td>${team.total}</td>`;
-
-    // Apply shimmer effect only to the top 3 ranks
-    row.classList.remove('gold', 'red', 'green', 'underline'); // Reset any previous classes
-    if (displayRank === 1) {
-      row.classList.add('gold', 'underline');
-    } else if (displayRank === 2) {
-      row.classList.add('red', 'underline');
-    } else if (displayRank === 3) {
-      row.classList.add('green', 'underline');
-    }
-  });
-}
-
 
     updateLeaderboard();
   </script>
