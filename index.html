@@ -11,97 +11,64 @@
       background: #000; /* Black background */
       color: #fff; /* White text */
       margin: 0;
-      padding: 20px;
+      padding: 15px;
       text-align: center;
     }
     .logo {
-      width: 150px;
-      height: 150px;
-      margin: 20px auto;
+      width: 100px; /* Smaller logo for mobile */
+      height: 100px;
+      margin: 10px auto;
       display: block;
     }
     h1.small-heading {
       color: #ff3333; /* Bright red for headings */
       font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 20px;
+      font-size: 1.5rem; /* Smaller font size for mobile */
+      margin-bottom: 10px;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 20px;
     }
     th, td {
-      padding: 12px;
+      padding: 8px; /* Reduced padding */
       text-align: center;
-      border-bottom: 2px solid #ff3333; /* Red borders */
-      background-color: #222; /* Dark background for rows */
-      color: #fff; /* White text */
+      border-bottom: 1px solid #ff3333; /* Thinner borders for a cleaner look */
+      font-size: 0.8rem; /* Smaller font size for content */
     }
     th {
       background-color: #ff3333; /* Red background */
       color: #000; /* Black text */
-      font-size: 1.2rem;
     }
-    /* Button styles */
     .button {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 8px 16px; /* Smaller padding */
       background-color: #ff3333; /* Bright red */
       color: #000; /* Black text */
-      font-size: 1rem;
+      font-size: 0.9rem; /* Smaller font size */
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s, transform 0.2s;
       text-decoration: none;
-      margin-top: 20px;
+      margin-top: 10px;
     }
     .button:hover {
       background-color: #cc0000; /* Darker red on hover */
-      transform: translateY(-2px); /* Slight lift */
+      transform: translateY(-2px); /* Subtle lift */
     }
     a {
-      color: #ff3333; /* Link color */
+      color: #ff3333; /* Red link color */
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
-    /* Shimmer effect for top 3 */
-    .gold {
-      background: linear-gradient(90deg, rgba(255, 215, 0, 0) 50%, rgba(255, 215, 0, 0.75) 75%, rgba(255, 215, 0, 0) 100%);
-      color: #ffd700; /* Gold text */
-      animation: shimmerGold 2s infinite;
-    }
-    .silver {
-      background: linear-gradient(90deg, rgba(0, 229, 255, 0) 50%, rgba(0, 229, 255, 0.75) 75%, rgba(0, 229, 255, 0) 100%);
-      color: #00e5ff; /* Neon blue text */
-      animation: shimmerSilver 2s infinite;
-    }
-    .bronze {
-      background: linear-gradient(90deg, rgba(205, 127, 50, 0) 50%, rgba(205, 127, 50, 0.75) 75%, rgba(205, 127, 50, 0) 100%);
-      color: #cd7f32; /* Bronze text */
-      animation: shimmerBronze 2s infinite;
-    }
-    @keyframes shimmerGold {
-      0% { background-position: 100% 0; }
-      100% { background-position: -100% 0; }
-    }
-    @keyframes shimmerSilver {
-      0% { background-position: 100% 0; }
-      100% { background-position: -100% 0; }
-    }
-    @keyframes shimmerBronze {
-      0% { background-position: 100% 0; }
-      100% { background-position: -100% 0; }
-    }
     @media (max-width: 600px) {
-      h1.small-heading {
-        font-size: 1.5rem;
+      body, th, td {
+        font-size: 0.7rem; /* Even smaller font size for very small devices */
       }
-      th, td {
-        font-size: 0.9rem;
-        padding: 8px;
+      .button {
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -154,13 +121,6 @@
         }
         const row = table.insertRow(-1);
         row.innerHTML = `<td>${displayRank}</td><td><a href="${team.page}">${team.name}</a></td><td>${team.erangel}</td><td>${team.vikendi}</td><td>${team.miramar}</td><td>${team.sanhok}</td><td>${team.total}</td>`;
-        if (displayRank === 1) {
-          row.classList.add('gold');
-        } else if (displayRank === 2) {
-          row.classList.add('silver');
-        } else if (displayRank === 3) {
-          row.classList.add('bronze');
-        }
       });
     }
     updateLeaderboard();
