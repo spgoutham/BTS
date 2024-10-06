@@ -5,55 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Week 1 Results</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
- <style>
+  <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #000; /* Black background */
-      color: #fff; /* White text */
+      background: #FFEDCC; /* Light orange */
       margin: 0;
-      padding: 20px;
+      padding: 30px;
       text-align: center;
     }
     h1 {
-      color: #e63946; /* Lighter red for headings */
-      font-size: 2rem; /* Smaller font size for compact appearance */
-      margin-bottom: 20px;
+      color: #8A2BE2;
+      font-size: 2.5rem;
     }
     table {
-      width: 80%; /* More compact table width */
-      margin: 20px auto; /* Center alignment and spacing */
+      width: 60%;
+      margin: 0 auto 20px auto;
       border-collapse: collapse;
-      border: 1px solid #e63946; /* Lighter red border */
-      background-color: #222; /* Dark gray for rows */
+      border: 2px solid #00BFFF;
+      text-align: center;
     }
-    
-    th {
-      background-color: #e63946; /* Red background for headers */
-      color: #000; /* Black text for contrast */
+    td {
+      padding: 8px;
+      border: 1px solid #ddd;
     }
-    td[colspan="2"] { /* Target only colspan="2" for specific styling */
+    td[colspan] {
       font-weight: bold;
-      background-color: #e63946; /* Consistent background color for header rows */
-      color: #000;
+      background-color: #00BFFF;
+      color: white;
     }
-    a {
-      color: #e63946; /* Lighter red for links */
-      text-decoration: none;
-      padding: 5px;
-      transition: color 0.3s ease;
+    th, td.left, td.right {
+      width: 50%;
+      text-align: center;
     }
-    a:hover {
-      text-decoration: underline;
-      color: #ffcccc; /* Lighter red on hover */
+   @keyframes redShimmer {
+      0%, 100% { color: black; }
+      50% { color: red; }
     }
-    /* Responsive adjustments for smaller screens */
-    @media (max-width: 600px) {
-      table {
-        width: 100%; /* Full width on smaller screens */
-      }
-      h1 {
-        font-size: 1.5rem; /* Smaller header on mobile */
-      }
+
+    /* Apply shimmer effect to the last 4 rows of each table */
+    table tr:nth-last-child(-n+4) {
+      animation: redShimmer 2s linear infinite;
+    }
+table tr:nth-child(3) {
+      background-color: #00BFFF;
+      color: white;
+      font-weight: bold;
     }
   </style>
 </head>
