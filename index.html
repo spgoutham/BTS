@@ -8,7 +8,8 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #FFFCF2;
+      background: #000; /* Black background */
+      color: #fff; /* White text color */
       margin: 0;
       padding: 30px;
       text-align: center;
@@ -21,7 +22,7 @@
     }
     h1.small-heading {
       font-family: 'Poppins', sans-serif;
-      color: #8A2BE2;
+      color: #ff0000; /* Red color for heading */
       font-weight: normal;
       font-size: 2.5rem;
       margin: 0;
@@ -29,36 +30,23 @@
     table {
       width: 100%;
       border-collapse: collapse;
+      border-color: #ff0000; /* Red border color */
     }
     th, td {
       padding: 8px;
       text-align: center;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #dd0000; /* Dark red for separation */
+      color: #fff; /* White text color */
     }
     th {
-      background-color: #00BFFF;
+      background-color: #ff0000; /* Red background for headers */
       color: white;
-    }
-
-    @keyframes goldShimmer {
-      0%, 100% { color: #FFD700; } /* Light gold */
-      50% { color: #B8860B; } /* Dark gold */
-    }
-
-    @keyframes redShimmer {
-      0%, 100% { color: #FF7F7F; } /* Light red */
-      50% { color: #8B0000; } /* Dark red */
-    }
-
-    @keyframes greenShimmer {
-      0%, 100% { color: #90EE90; } /* Light green */
-      50% { color: #006400; } /* Dark green */
     }
     /* Button styles */
     .button {
       display: inline-block;
       padding: 12px 24px;
-      background-color: #00BFFF;
+      background-color: #ff0000; /* Red background for buttons */
       color: white;
       font-size: 1rem;
       font-family: 'Poppins', sans-serif;
@@ -69,82 +57,27 @@
       margin-top: 20px;
       text-decoration: none;
     }
-
     /* Hover effect for button */
     .button:hover {
-      background-color: #008CBA;
+      background-color: #cc0000; /* Darker red on hover */
       transform: scale(1.05);
     }
-
-    /* Remove default underline and add custom underline */
     a {
       text-decoration: none;
       position: relative;
-      color: black;
+      color: #ff0000; /* Red link color */
     }
     a.instagram {
-      color: #FF7F7F; /* Light red */
+      color: #ff7f7f; /* Light red */
       text-decoration: underline; /* Adding underline */
     }
-    .underline.gold a::after,
-    .underline.red a::after,
-    .underline.green a::after,
-    .underline.black a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 100%;
-      height: 2px;
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease;
-    }
-
-    .underline.gold a::after {
-      background-color: gold;
-    }
-
-    .underline.red a::after {
-      background-color: red;
-    }
-
-    .underline.green a::after {
-      background-color: green;
-    }
-
-    .underline.black a::after {
-      background-color: black;
-    }
-
-    .underline a:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    /* Applying shimmer effect */
-    .gold a {
-      color: gold;
-      animation: goldShimmer 3s linear infinite;
-    }
-
-    .red a {
-      color: red;
-      animation: redShimmer 3s linear infinite;
-    }
-
-    .green a {
-      color: green;
-      animation: greenShimmer 3s linear infinite;
-    }
-
     @media (max-width: 600px) {
       body {
         padding: 10px;
       }
       .logo {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
       }
       h1.small-heading {
         font-size: 1.6rem;
@@ -170,12 +103,8 @@
       <th>Total Points</th>
     </tr>
   </table>
-
-  <!-- Button -->
   <a href="weeks.html" class="button">View Weekly Results</a>
   <p>In case of any incorrect values or changes, drop a message on my Instagram <a href="https://instagram.com/evilstxrm" class="instagram">Evil$txrm</a></p>
-
-
   <script>
     let teams = [
       { name: "SO-BTS", erangel: 3, vikendi: 0, miramar: 2, sanhok: 0, page: 'sobts.html' },
@@ -188,21 +117,16 @@
       { name: "J-BTS", erangel: 0, vikendi: 0, miramar: 1, sanhok: 0, page: 'jbts.html' },
       { name: "DomBTS", erangel: 0, vikendi: 0, miramar: 1, sanhok: 0, page: 'dombts.html' }
     ];
-    
-
     function updateLeaderboard() {
       teams.forEach(team => {
         team.total = team.erangel + team.vikendi + team.miramar + team.sanhok;
       });
       teams.sort((a, b) => b.total - a.total);
-
       const table = document.getElementById('leaderboard');
       table.innerHTML = '<tr><th>Rank</th><th>Team Name</th><th>Erangel</th><th>Vikendi</th><th>Miramar</th><th>Sanhok</th><th>Total Points</th></tr>';
-
       let lastScore = null;
       let rank = 1;
       let displayRank = 1;
-
       teams.forEach((team, index) => {
         if (team.total !== lastScore) {
           if (index > 0) {
@@ -211,13 +135,8 @@
           lastScore = team.total;
           displayRank = rank;
         }
-
-        // Create a new table row
         const row = table.insertRow(-1);
         row.innerHTML = `<td>${displayRank}</td><td><a href="${team.page}">${team.name}</a></td><td>${team.erangel}</td><td>${team.vikendi}</td><td>${team.miramar}</td><td>${team.sanhok}</td><td>${team.total}</td>`;
-
-        // Apply shimmer and color effect for the top 3 ranks
-        row.classList.remove('gold', 'red', 'green', 'black', 'underline'); // Reset any previous classes
         if (displayRank === 1) {
           row.classList.add('gold', 'underline');
         } else if (displayRank === 2) {
@@ -225,12 +144,10 @@
         } else if (displayRank === 3) {
           row.classList.add('green', 'underline');
         } else {
-          // Apply black underline for ranks 4 and below
           row.classList.add('black', 'underline');
         }
       });
     }
-
     updateLeaderboard();
   </script>
 </body>
