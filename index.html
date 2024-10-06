@@ -39,7 +39,7 @@
       color: #fff; /* White text */
     }
     th {
-      background-color: #ff3333; /* Red background for headers */
+      background-color: #ff3333; /* Red background */
       color: #000; /* Black text */
       font-size: 1.2rem;
     }
@@ -68,18 +68,32 @@
       text-decoration: underline;
     }
     /* Shimmer effect for top 3 */
-    .gold, .silver, .bronze {
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 75%, rgba(255, 255, 255, 0) 100%);
-      background-size: 200% 100%;
-      animation: shimmer 2s infinite;
+    .gold {
+      background: linear-gradient(90deg, rgba(255, 215, 0, 0) 50%, rgba(255, 215, 0, 0.75) 75%, rgba(255, 215, 0, 0) 100%);
+      color: #ffd700; /* Gold text */
+      animation: shimmerGold 2s infinite;
     }
-    @keyframes shimmer {
-      0% {
-        background-position: 100% 0;
-      }
-      100% {
-        background-position: -100% 0;
-      }
+    .silver {
+      background: linear-gradient(90deg, rgba(0, 229, 255, 0) 50%, rgba(0, 229, 255, 0.75) 75%, rgba(0, 229, 255, 0) 100%);
+      color: #00e5ff; /* Neon blue text */
+      animation: shimmerSilver 2s infinite;
+    }
+    .bronze {
+      background: linear-gradient(90deg, rgba(205, 127, 50, 0) 50%, rgba(205, 127, 50, 0.75) 75%, rgba(205, 127, 50, 0) 100%);
+      color: #cd7f32; /* Bronze text */
+      animation: shimmerBronze 2s infinite;
+    }
+    @keyframes shimmerGold {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
+    @keyframes shimmerSilver {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
+    @keyframes shimmerBronze {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
     }
     @media (max-width: 600px) {
       h1.small-heading {
