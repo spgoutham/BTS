@@ -28,17 +28,18 @@
     }
     th, td {
       padding: 8px; /* Sufficient padding for table cells */
-      border: 1px solid #e63946; /* Lighter red for internal borders */
+      border: 1px solid #e63946; /* Consistent border style for each cell */
       color: #fff; /* White text for readability */
+      text-align: center;
     }
     th {
       background-color: #e63946; /* Red background for headers */
       color: #000; /* Black text for contrast */
     }
-    td[colspan] {
+    td[colspan="2"] { /* Target only colspan="2" for specific styling */
       font-weight: bold;
-      background-color: #e63946; /* Red background for spanning cells */
-      color: #000; /* Black text for contrast */
+      background-color: #e63946; /* Consistent background color for header rows */
+      color: #000;
     }
     a {
       color: #e63946; /* Lighter red for links */
