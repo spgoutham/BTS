@@ -5,51 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Week 1 Results</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+ <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: #FFEDCC; /* Light orange */
+      background: #000; /* Black background */
+      color: #fff; /* White text */
       margin: 0;
-      padding: 30px;
+      padding: 20px;
       text-align: center;
     }
     h1 {
-      color: #8A2BE2;
-      font-size: 2.5rem;
+      color: #ff3333; /* Bright red for headings */
+      font-size: 2rem; /* Adjusted for mobile */
+      margin-bottom: 20px;
     }
     table {
-      width: 60%;
+      width: 100%; /* Full width for better mobile viewing */
       margin: 0 auto 20px auto;
       border-collapse: collapse;
-      border: 2px solid #00BFFF;
-      text-align: center;
+      border: 1px solid #ff3333;
     }
-    td {
+    th, td {
       padding: 8px;
       border: 1px solid #ddd;
+      background-color: #222; /* Dark background for cells */
+      color: #fff; /* White text for better contrast */
     }
     td[colspan] {
       font-weight: bold;
-      background-color: #00BFFF;
-      color: white;
+      background-color: #ff3333; /* Red background for section headers */
+      color: #000; /* Black text for contrast */
     }
     th, td.left, td.right {
-      width: 50%;
       text-align: center;
     }
-   @keyframes redShimmer {
-      0%, 100% { color: black; }
-      50% { color: red; }
+    a {
+      color: #ff3333; /* Bright red links */
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 5px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
     }
-
-    /* Apply shimmer effect to the last 4 rows of each table */
-    table tr:nth-last-child(-n+4) {
-      animation: redShimmer 2s linear infinite;
-    }
-table tr:nth-child(3) {
-      background-color: #00BFFF;
-      color: white;
-      font-weight: bold;
+    a:hover {
+      background-color: #ff3333;
+      color: #000;
     }
   </style>
 </head>
