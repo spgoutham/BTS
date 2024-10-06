@@ -8,53 +8,55 @@
  <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: #000; /* Black background */
+      background-color: #000; /* Black background */
       color: #fff; /* White text */
       margin: 0;
       padding: 20px;
       text-align: center;
     }
     h1 {
-      color: #e63946; /* Softer red for less eye strain */
-      font-size: 2rem;
+      color: #e63946; /* Lighter red for headings */
+      font-size: 2rem; /* Smaller font size for compact appearance */
       margin-bottom: 20px;
     }
     table {
-      width: 100%; /* Full width for layout consistency */
-      margin: 20px auto; /* Centering the table */
+      width: 80%; /* More compact table width */
+      margin: 20px auto; /* Center alignment and spacing */
       border-collapse: collapse;
+      border: 1px solid #e63946; /* Lighter red border */
+      background-color: #222; /* Dark gray for rows */
     }
     th, td {
-      padding: 10px;
-      border: 1px solid #e63946; /* Lighter red border */
-      background-color: #222; /* Dark background for each cell */
+      padding: 8px; /* Sufficient padding for table cells */
+      border: 1px solid #e63946; /* Lighter red for internal borders */
       color: #fff; /* White text for readability */
-      text-align: center;
+    }
+    th {
+      background-color: #e63946; /* Red background for headers */
+      color: #000; /* Black text for contrast */
     }
     td[colspan] {
-      background-color: #e63946; /* Lighter red background for headers */
-      color: #000; /* Black text for contrast */
       font-weight: bold;
+      background-color: #e63946; /* Red background for spanning cells */
+      color: #000; /* Black text for contrast */
     }
     a {
       color: #e63946; /* Lighter red for links */
       text-decoration: none;
       padding: 5px;
-      border-radius: 5px;
-      transition: background-color 0.3s, color 0.3s;
+      transition: color 0.3s ease;
     }
     a:hover {
-      background-color: #e63946; /* Lighter red background on hover */
-      color: #000; /* Black text for readability */
+      text-decoration: underline;
+      color: #ffcccc; /* Lighter red on hover */
     }
-    /* Responsive design for mobile devices */
+    /* Responsive adjustments for smaller screens */
     @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
+      table {
+        width: 100%; /* Full width on smaller screens */
       }
-      th, td {
-        font-size: 0.8rem; /* Smaller font size for mobile readability */
-        padding: 8px; /* Adjust padding for smaller screens */
+      h1 {
+        font-size: 1.5rem; /* Smaller header on mobile */
       }
     }
   </style>
