@@ -8,41 +8,37 @@
  <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: #000; /* Black background */
-      color: #fff; /* White text */
+      background: #000; /* Black background for consistency */
+      color: #fff; /* White text for better readability */
       margin: 0;
       padding: 20px;
       text-align: center;
     }
     h1 {
-      color: #ff3333; /* Bright red for headings */
-      font-size: 2rem; /* Adjusted for mobile */
+      color: #ff3333; /* Consistent red color for headings */
+      font-size: 2rem; /* Adjusted for readability */
       margin-bottom: 20px;
     }
     table {
-      width: 100%; /* Full width for better mobile viewing */
-      margin: 0 auto 20px auto;
+      width: 100%; /* Full width for better layout control */
+      margin: 20px auto; /* Centering the table */
       border-collapse: collapse;
-      border: 1px solid #ff3333;
     }
     th, td {
-      padding: 8px;
-      border: 1px solid #ddd;
-      background-color: #222; /* Dark background for cells */
-      color: #fff; /* White text for better contrast */
-    }
-    td[colspan] {
-      font-weight: bold;
-      background-color: #ff3333; /* Red background for section headers */
-      color: #000; /* Black text for contrast */
-    }
-    th, td.left, td.right {
+      padding: 10px; /* Sufficient padding for table data */
+      border: 1px solid #ff3333; /* Red borders for consistency */
+      background-color: #222; /* Darker background for each cell */
+      color: #fff; /* White text */
       text-align: center;
     }
+    td[colspan] {
+      background-color: #ff3333; /* Red background for header rows */
+      color: #000; /* Black text for contrast */
+      font-weight: bold;
+    }
     a {
-      color: #ff3333; /* Bright red links */
+      color: #ff3333; /* Red link for consistency */
       text-decoration: none;
-      font-size: 1rem;
       padding: 5px;
       border-radius: 5px;
       transition: background-color 0.3s, color 0.3s;
@@ -50,6 +46,16 @@
     a:hover {
       background-color: #ff3333;
       color: #000;
+    }
+    /* Responsive design adjustments */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem; /* Smaller heading on mobile devices */
+      }
+      th, td {
+        font-size: 0.8rem; /* Smaller text in tables for mobile readability */
+        padding: 8px; /* Adjust padding to fit smaller screens */
+      }
     }
   </style>
 </head>
