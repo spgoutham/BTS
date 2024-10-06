@@ -7,84 +7,91 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background: #000; /* Black background */
       color: #fff; /* White text color */
       margin: 0;
-      padding: 30px;
+      padding: 20px;
       text-align: center;
     }
     .logo {
-      width: 200px;
-      height: 200px;
-      margin: 0 auto;
+      width: 150px;
+      height: 150px;
+      margin: 20px auto;
       display: block;
     }
     h1.small-heading {
-      font-family: 'Poppins', sans-serif;
-      color: #ff0000; /* Red color for heading */
-      font-weight: normal;
-      font-size: 2.5rem;
-      margin: 0;
+      color: #ff3333; /* Bright red for headings */
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      border-color: #ff0000; /* Red border color */
+      margin-top: 20px;
     }
     th, td {
-      padding: 8px;
+      padding: 12px;
       text-align: center;
-      border-bottom: 1px solid #dd0000; /* Dark red for separation */
-      color: #fff; /* White text color */
+      border-bottom: 2px solid #ff3333; /* Red borders */
     }
     th {
-      background-color: #ff0000; /* Red background for headers */
-      color: white;
+      background-color: #ff3333; /* Red background */
+      color: #000; /* Black text for contrast */
+      font-size: 1.2rem;
+    }
+    td {
+      color: #fff; /* White text */
+      background-color: #222; /* Slightly lighter black for rows */
     }
     /* Button styles */
     .button {
       display: inline-block;
-      padding: 12px 24px;
-      background-color: #ff0000; /* Red background for buttons */
-      color: white;
+      padding: 10px 20px;
+      background-color: #ff3333; /* Bright red */
+      color: #000; /* Black text */
       font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
-      border: none;
-      border-radius: 25px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      margin-top: 20px;
+      transition: background-color 0.3s, transform 0.2s;
       text-decoration: none;
+      margin-top: 20px;
     }
-    /* Hover effect for button */
     .button:hover {
       background-color: #cc0000; /* Darker red on hover */
-      transform: scale(1.05);
+      transform: translateY(-2px); /* Slight lift */
     }
     a {
+      color: #ff3333; /* Link color */
       text-decoration: none;
-      position: relative;
-      color: #ff0000; /* Red link color */
     }
-    a.instagram {
-      color: #ff7f7f; /* Light red */
-      text-decoration: underline; /* Adding underline */
+    a:hover {
+      text-decoration: underline;
+    }
+    /* Shimmer effect for top 3 */
+    .gold, .silver, .bronze {
+      animation: shimmer 2s infinite;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.2) 80%);
+      background-size: 200% auto;
+      color: #fff;
+      background-clip: text;
+      text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @keyframes shimmer {
+      to {
+        background-position: 200% center;
+      }
     }
     @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-      .logo {
-        width: 150px;
-        height: 150px;
-      }
       h1.small-heading {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
       }
       th, td {
-        font-size: 12px;
-        padding: 6px;
+        font-size: 0.9rem;
+        padding: 8px;
       }
     }
   </style>
@@ -104,7 +111,7 @@
     </tr>
   </table>
   <a href="weeks.html" class="button">View Weekly Results</a>
-  <p>In case of any incorrect values or changes, drop a message on my Instagram <a href="https://instagram.com/evilstxrm" class="instagram">Evil$txrm</a></p>
+  <p>In case of any incorrect values or changes, drop a message on my Instagram <a href="https://instagram.com/evilstxrm">Evil$txrm</a></p>
   <script>
     let teams = [
       { name: "SO-BTS", erangel: 3, vikendi: 0, miramar: 2, sanhok: 0, page: 'sobts.html' },
@@ -138,13 +145,11 @@
         const row = table.insertRow(-1);
         row.innerHTML = `<td>${displayRank}</td><td><a href="${team.page}">${team.name}</a></td><td>${team.erangel}</td><td>${team.vikendi}</td><td>${team.miramar}</td><td>${team.sanhok}</td><td>${team.total}</td>`;
         if (displayRank === 1) {
-          row.classList.add('gold', 'underline');
+          row.classList.add('gold');
         } else if (displayRank === 2) {
-          row.classList.add('red', 'underline');
+          row.classList.add('silver');
         } else if (displayRank === 3) {
-          row.classList.add('green', 'underline');
-        } else {
-          row.classList.add('black', 'underline');
+          row.classList.add('bronze');
         }
       });
     }
