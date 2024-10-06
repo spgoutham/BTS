@@ -9,7 +9,7 @@
     body {
       font-family: 'Poppins', sans-serif;
       background: #000; /* Black background */
-      color: #fff; /* White text color */
+      color: #fff; /* White text */
       margin: 0;
       padding: 20px;
       text-align: center;
@@ -35,15 +35,13 @@
       padding: 12px;
       text-align: center;
       border-bottom: 2px solid #ff3333; /* Red borders */
+      background-color: #222; /* Dark background for rows */
+      color: #fff; /* White text */
     }
     th {
-      background-color: #ff3333; /* Red background */
-      color: #000; /* Black text for contrast */
+      background-color: #ff3333; /* Red background for headers */
+      color: #000; /* Black text */
       font-size: 1.2rem;
-    }
-    td {
-      color: #fff; /* White text */
-      background-color: #222; /* Slightly lighter black for rows */
     }
     /* Button styles */
     .button {
@@ -71,15 +69,16 @@
     }
     /* Shimmer effect for top 3 */
     .gold, .silver, .bronze {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 75%, rgba(255, 255, 255, 0) 100%);
+      background-size: 200% 100%;
       animation: shimmer 2s infinite;
-      background: linear-gradient(to right, transparent 20%, rgba(255, 255, 255, 0.5) 50%, transparent 80%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
     @keyframes shimmer {
-      to {
-        background-position: 200% center;
+      0% {
+        background-position: 100% 0;
+      }
+      100% {
+        background-position: -100% 0;
       }
     }
     @media (max-width: 600px) {
