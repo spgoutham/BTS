@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DomBTS Results</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #FFEDCC;
+      margin: 0;
+      padding: 30px;
+      text-align: center;
+    }
+table tr:nth-child(3) {
+      background-color: #00BFFF;
+      color: white;
+      font-weight: bold;
+    }
+    h1 {
+      color: #8A2BE2;
+      font-size: 2.5rem;
+    }
+@keyframes redShimmer {
+      0%, 100% { color: black; }
+      50% { color: red; }
+    }
+
+    /* Apply shimmer effect to the last 4 rows of each table */
+    table tr:nth-last-child(-n+4) {
+      animation: redShimmer 2s linear infinite;
+    }
+    table {
+      width: 60%;
+      margin: 0 auto 20px auto;
+      border-collapse: collapse;
+      border: 2px solid #00BFFF;
+      text-align: center;
+    }
+    td {
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+    td[colspan] {
+      font-weight: bold;
+      background-color: #00BFFF;
+      color: white;
+    }
+    th, td.left, td.right {
+      width: 50%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>DomBTS Results</h1>
+
+  <!-- Display relevant results from Week 1 -->
+  <table>
+    <tr>
+      <td colspan="2">WEEK 3 | SATURDAY | MATCH 2 - Miramar</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="font-weight: bold;">DomBTS</td>
+    </tr>
+    <tr>
+      <td class="left">Player Name</td>
+      <td class="right">Kills</td>
+    </tr>
+    <tr>
+      <td class="left">Abi OP</td>
+      <td class="right">5</td>
+    </tr>
+    <tr>
+      <td class="left">Mafia Snipe YT</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td class="left">Dominic</td>
+      <td class="right">7</td>
+    </tr>
+    <tr>
+      <td class="left">Survival</td>
+      <td class="right">1</td>
+    </tr>
+  </table>
+  
+  <a href="index.html" style="color: #00BFFF; text-decoration: underline;">Back to Leaderboard</a>
+</body>
+</html>
