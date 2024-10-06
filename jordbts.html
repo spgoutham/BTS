@@ -5,51 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SO-BTS Results</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #FFEDCC;
+      background: #000000; /* Black background */
+      color: #FFFFFF; /* White text color for better visibility */
       margin: 0;
       padding: 30px;
       text-align: center;
     }
-table tr:nth-child(3) {
-      background-color: #00BFFF;
-      color: white;
-      font-weight: bold;
-    }
     h1 {
-      color: #8A2BE2;
+      color: #FF0000; /* Red color for headings */
       font-size: 2.5rem;
-    }
-@keyframes redShimmer {
-      0%, 100% { color: black; }
-      50% { color: red; }
-    }
-
-    /* Apply shimmer effect to the last 4 rows of each table */
-    table tr:nth-last-child(-n+4) {
-      animation: redShimmer 2s linear infinite;
     }
     table {
       width: 60%;
       margin: 0 auto 20px auto;
       border-collapse: collapse;
-      border: 2px solid #00BFFF;
+      border: 2px solid #FF0000; /* Red border for tables */
       text-align: center;
     }
     td {
       padding: 8px;
-      border: 1px solid #ddd;
+      border: 1px solid #ddd; /* Light grey border for cells */
     }
     td[colspan] {
       font-weight: bold;
-      background-color: #00BFFF;
+      background-color: #FF0000; /* Red background for table header cells */
       color: white;
     }
     th, td.left, td.right {
       width: 50%;
       text-align: center;
+    }
+    table tr:nth-child(3) {
+      background-color: #FF0000; /* Red background for table sub-header */
+      color: white;
+      font-weight: bold;
     }
   </style>
 </head>
