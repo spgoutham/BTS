@@ -103,27 +103,40 @@
       { name: "UP-BTS", erangel: 0, vikendi: 0, miramar: 1, sanhok: 0, page: 'upbts.html' }
     ];
     function updateLeaderboard() {
-      teams.forEach(team => {
-        team.total = team.erangel + team.vikendi + team.miramar + team.sanhok;
-      });
-      teams.sort((a, b) => b.total - a.total);
-      const table = document.getElementById('leaderboard');
-      table.innerHTML = '<tr><th>Rank</th><th>Team Name</th><th>Erangel</th><th>Vikendi</th><th>Miramar</th><th>Sanhok</th><th>Total Points</th></tr>';
-      let lastScore = null;
-      let rank = 1;
-      let displayRank = 1;
-      teams.forEach((team, index) => {
-        if (team.total !== lastScore) {
-          if (index > 0) {
-            rank = index + 1;
-          }
-          lastScore = team.total;
-          displayRank = rank;
-        }
-        const row = table.insertRow(-1);
-        row.innerHTML = `<td>${displayRank}</td><td><a href="${team.page}">${team.name}</a></td><td>${team.erangel}</td><td>${team.vikendi}</td><td>${team.miramar}</td><td>${team.sanhok}</td><td>${team.total}</td>`;
-      });
+  teams.forEach(team => {
+    team.total = team.erangel + team.vikendi + team.miramar + team.sanhok;
+  });
+  
+  // Sort teams by total points. If two teams have the same total, M-BTS comes before SO-BTS
+  teams.sort((a, b) => {
+    if (b.total === a.total) {
+      if (a.name === "SO-BTS" && b.name === "M-BTS") return 1;
+      if (a.name === "M-BTS" && b.name === "SO-BTS") return -1;
+      return 0; // If it's not SO-BTS vs M-BTS, no special sorting
     }
+    return b.total - a.total;
+  });
+
+  const table = document.getElementById('leaderboard');
+  table.innerHTML = '<tr><th>Rank</th><th>Team Name</th><th>Erangel</th><th>Vikendi</th><th>Miramar</th><th>Sanhok</th><th>Total Points</th></tr>';
+  
+  let lastScore = null;
+  let rank = 1;
+  let displayRank = 1;
+  
+  teams.forEach((team, index) => {
+    if (team.total !== lastScore) {
+      if (index > 0) {
+        rank = index + 1;
+      }
+      lastScore = team.total;
+      displayRank = rank;
+    }
+    const row = table.insertRow(-1);
+    row.innerHTML = `<td>${displayRank}</td><td><a href="${team.page}">${team.name}</a></td><td>${team.erangel}</td><td>${team.vikendi}</td><td>${team.miramar}</td><td>${team.sanhok}</td><td>${team.total}</td>`;
+  });
+}
+
     updateLeaderboard();
   </script>
 </body>
