@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JP Trophy Leaderboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      margin: 0;
+      padding: 15px;
+      text-align: center;
+    }
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin: 10px auto;
+      display: block;
+    }
+    h1.small-heading {
+      color: #ff3333;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #ff3333;
+      font-size: 0.8rem;
+    }
+    th {
+      background-color: #ff3333;
+      color: #000;
+    }
+    .total-points {
+      font-weight: bold;
+    }
+    @media (max-width: 600px) {
+      body, th, td {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="logo.png" alt="Logo" class="logo">
+  <h1 class="small-heading">JP Trophy Leaderboard</h1>
+  <table id="jpLeaderboard">
+    <tr>
+      <th>Rank</th>
+      <th>Team Name</th>
+      <th>Matches</th>
+      <th>WWCD</th>
+      <th>Position Points</th>
+      <th>Kills Points</th>
+      <th>Total Points</th>
+    </tr>
+    <tbody id="teamsTable">
+      <!-- Team rows will be added here by JavaScript -->
+    </tbody>
+  </table>
+  <a href="index.html" class="button">Back to WAR Leaderboard</a>
+  
+  <script>
+    let jpTeams = [
+      { name: "HBTS", matches: 4, wwcd: 2, positionPoints: 20, killsPoints: 49 },
+      { name: "SPARK IS LIVE", matches: 4, wwcd: 0, positionPoints: 8, killsPoints: 11 },
+      { name: "SOBTS", matches: 4, wwcd: 0, positionPoints: 14, killsPoints: 32 },
+      { name: "Team Mugilan", matches: 4, wwcd: 0, positionPoints: 6, killsPoints: 6 },
+      { name: "TEAM BLOODY", matches: 4, wwcd: 0, positionPoints: 8, killsPoints: 11 },
+      { name: "TEAM FERDIN", matches: 4, wwcd: 1, positionPoints: 12, killsPoints: 23 },
+      { name: "JBTS", matches: 4, wwcd: 0, positionPoints: 0, killsPoints: 9 },
+      { name: "MBTS", matches: 4, wwcd: 0, positionPoints: 8, killsPoints: 26 },
+      { name: "TEAM MLG", matches: 4, wwcd: 0, positionPoints: 0, killsPoints: 10 },
+      { name: "UPBTS", matches: 4, wwcd: 0, positionPoints: 12, killsPoints: 26 },
+      { name: "TEAM REYNOLD YT", matches: 4, wwcd: 0, positionPoints: 2, killsPoints: 14 },
+      { name: "TEAM YT MONK", matches: 4, wwcd: 0, positionPoints: 0, killsPoints: 12 },
+      { name: "FIRE BTS", matches: 4, wwcd: 0, positionPoints: 12, killsPoints: 14 },
+      { name: "BTS", matches: 4, wwcd: 0, positionPoints: 0, killsPoints: 13 },
+      { name: "TEAM RIMPI", matches: 4, wwcd: 0, positionPoints: 0, killsPoints: 5 },
+      { name: "TEAM TXB", matches: 4, wwcd: 0, positionPoints: 0, killsPoints: 7 },
+      { name: "TEAM TNR", matches: 4, wwcd: 0, positionPoints: 8, killsPoints: 23 },
+      { name: "JP BTS", matches: 4, wwcd: 0, positionPoints: 0, killsPoints: 1 },
+      { name: "GBTS", matches: 4, wwcd: 0, positionPoints: 2, killsPoints: 3 },
+      { name: "Killer BTS", matches: 4, wwcd: 0, positionPoints: 8, killsPoints: 10 },
+      { name: "TEAM SPOOKY", matches: 4, wwcd: 0, positionPoints: 0, killsPoints: 3 }
+    ];
+
+    function populateTeams() {
+      const tableBody = document.getElementById('teamsTable');
+      tableBody.innerHTML = ''; // Clear existing rows
+
+      // Sort teams based on total points
+      jpTeams.sort((a, b) => (b.positionPoints + b.killsPoints) - (a.positionPoints + a.killsPoints));
+
+      jpTeams.forEach((team, index) => {
+        const totalPoints = team.positionPoints + team.killsPoints;
+        const row = tableBody.insertRow(-1);
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${team.name}</td>
+          <td>${team.matches}</td>
+          <td>${team.wwcd}</td>
+          <td contenteditable="true" oninput="updatePoints(${index})" class="position-points">${team.positionPoints}</td>
+          <td contenteditable="true" oninput="updatePoints(${index})" class="kills-points">${team.killsPoints}</td>
+          <td id="total_${index}" class="total-points">${totalPoints}</td>
+        `;
+      });
+    }
+
+    function updatePoints(index) {
+      const positionCell = document.querySelector(`#teamsTable .position-points:nth-child(${index + 5})`);
+      const killsCell = document.querySelector(`#teamsTable .kills-points:nth-child(${index + 6})`);
+      const totalCell = document.getElementById(`total_${index}`);
+
+      const position = parseInt(positionCell.textContent) || 0;
+      const kills = parseInt(killsCell.textContent) || 0;
+
+      // Calculate position points
+      let positionPoints = 0;
+      if (position === 1) positionPoints = 10;
+      else if (position === 2) positionPoints = 8;
+      else if (position === 3) positionPoints = 6;
+      else if (position === 4) positionPoints = 4;
+      else if (position === 5) positionPoints = 2;
+
+      // Update team points
+      jpTeams[index].positionPoints = positionPoints;
+      jpTeams[index].killsPoints = kills;
+
+      // Update total points
+      const totalPoints = positionPoints + kills;
+      jpTeams[index].totalPoints = totalPoints;
+      totalCell.textContent = totalPoints;
+
+      // Sort teams based on total points
+      populateTeams();
+    }
+
+    // Populate the teams in the table on page load
+    populateTeams();
+  </script>
+
+</body>
+</html>
