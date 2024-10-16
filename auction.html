@@ -280,12 +280,30 @@ ul li {
             });
         }
 
+        function updateCheckboxes() {
+            const allCheckedPlayers = [];
+            voteForms.forEach(form => {
+                const selectedPlayers = Array.from(form.querySelectorAll('input[name="player"]:checked'));
+                allCheckedPlayers.push(...selectedPlayers.map(input => input.value));
+            });
+
+            voteForms.forEach(form => {
+                form.querySelectorAll('input[name="player"]').forEach(checkbox => {
+                    if (allCheckedPlayers.includes(checkbox.value) && !checkbox.checked) {
+                        checkbox.disabled = true; // Disable if player is selected in any other team
+                    } else {
+                        checkbox.disabled = false; // Enable if not selected
+                    }
+                });
+            });
+        }
+
         updatePublicResults();
 
         voteForms.forEach(form => {
             form.addEventListener('change', () => {
                 const selectedPlayers = Array.from(form.querySelectorAll('input[name="player"]:checked'));
-                
+
                 if (selectedPlayers.length >= 4) {
                     // Disable all unchecked checkboxes if 4 players are selected
                     form.querySelectorAll('input[name="player"]:not(:checked)').forEach(checkbox => {
@@ -297,6 +315,9 @@ ul li {
                         checkbox.disabled = false; // Enable all checkboxes
                     });
                 }
+
+                // Update all checkbox states
+                updateCheckboxes();
             });
 
             form.addEventListener('submit', event => {
@@ -314,7 +335,6 @@ ul li {
                     return;
                 }
 
-                // Disable the selected players in other teams
                 selectedPlayers.forEach(player => {
                     voteForms.forEach(innerForm => {
                         if (innerForm !== form) {
@@ -349,8 +369,12 @@ ul li {
                 alert(`Your votes for ${team} have been submitted!`);
             });
         });
+
+        // Update checkbox states on page load
+        updateCheckboxes();
     });
 </script>
+
 
 
 </body>
