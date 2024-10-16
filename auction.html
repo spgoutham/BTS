@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTS Auction - Vote for Players</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 15px;
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            color: #ff6347;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            margin-top: 15px;
+            font-size: 1.3rem;
+        }
+
+        .team-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 1rem;
+            color: #ffcccb;
+        }
+
+        
+input[type="checkbox"] {
+    transform: scale(1.5); /* Make checkboxes bigger */
+    margin-right: 10px; /* Space between checkbox and label text */
+}
+
+	.team-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column; /* Stack checkboxes vertically */
+    align-items: center; /* Center align the items */
+    margin-bottom: 10px; /* Space below the group */
+}
+
+
+.checkbox-group input[type="checkbox"] {
+    margin: 5px 10px 5px 0; /* Adjust margin as needed */
+}
+
+.checkbox-label {
+    display: block; /* Ensure each label takes a full line */
+    margin-bottom: 10px; /* Space between players */
+    text-align: center; /* Center align the text */
+}
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+	.public-results {
+    margin-top: 30px;
+    padding: 15px;
+    background: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.public-results h2 {
+    margin: 0 0 15px 0;
+    font-size: 1.8rem;
+    color: #ff6347;
+}
+
+.team-results {
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #2a2a2a;
+    border-radius: 5px;
+}
+
+.team-results h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #ffcccb;
+}
+
+.team-results p {
+    margin: 5px 0;
+    color: #f0e68c;
+    font-size: 1rem;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 5px 0;
+    padding: 5px;
+    background: #1e1e1e;
+    border-radius: 4px;
+}
+
+
+        button:hover {
+            background-color: #ff4500;
+        }
+
+        .public-results {
+            margin-top: 30px;
+        }
+
+        .public-results h3 {
+            color: #ff6347;
+        }
+
+        .public-results p {
+            margin-left: 20px;
+            font-size: 1rem;
+            color: #f0e68c;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ff6347;
+            font-size: 1rem;
+        }
+
+        th {
+            background-color: #ff6347;
+            color: #000;
+        }
+
+        td {
+            background-color: #1e1e1e;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            h3 {
+                font-size: 1rem;
+            }
+
+            table th, table td {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>BTS Auction - Vote for Players</h1>
+
+    <div id="auction-section">
+        <script>
+            const players = [
+                "Punk og", "Choco", "Eswa", "Jeeva", "Cloud empire",
+                "Goat is live", "Rush god", "Raasu live", "Tom plays",
+                "Jordan", "Sky op", "Netlag", "Survival", "Ishaan",
+                "Dora op", "Naresh", "Capsun", "Dominic"
+            ];
+
+            function createPlayerCheckboxes(usedPlayers = []) {
+                return `
+    <div class="checkbox-group">
+        ${players.map(player => `
+            <label class="checkbox-label">
+                <input type="checkbox" name="player" value="${player}" ${usedPlayers.includes(player) ? 'disabled' : ''}>
+                ${player}
+            </label>
+        `).join('')}
+    </div>
+`;
+
+            }
+
+            const teams = ['JBTS', 'FIRE BTS', 'SOBTS', 'DANGERBTS', 'KILLERBTS'];
+            const auctionSection = document.getElementById('auction-section');
+
+            teams.forEach(team => {
+                auctionSection.innerHTML += `
+                    <div class="team-section">
+                        <h2>${team}</h2>
+                        <form class="vote-form" data-team="${team}">
+                            <label>Select up to 4 players:</label><br>
+                            ${createPlayerCheckboxes()}
+                            <button type="submit">Submit Vote</button>
+                        </form>
+                    </div>
+                `;
+            });
+        </script>
+    </div>
+
+    <div id="public-results" class="public-results">
+        <h2>Public Voting Results</h2>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const voteForms = document.querySelectorAll('.vote-form');
+        const publicResults = document.getElementById('public-results');
+
+        const votes = JSON.parse(localStorage.getItem('votes')) || {};
+        const userVotes = JSON.parse(localStorage.getItem('userVotes')) || {};
+
+        function updatePublicResults() {
+            publicResults.innerHTML = '';
+            const sortedTeams = Object.keys(votes).sort((a, b) => {
+                return Object.values(votes[b]).reduce((a, b) => a + b, 0) - Object.values(votes[a]).reduce((a, b) => a + b, 0);
+            });
+
+            sortedTeams.forEach(team => {
+                const teamDiv = document.createElement('div');
+                teamDiv.classList.add('team-results');
+
+                const teamHeader = document.createElement('h3');
+                teamHeader.innerText = team;
+                teamDiv.appendChild(teamHeader);
+
+                const playerList = document.createElement('ul');
+                const sortedPlayers = Object.entries(votes[team]).sort((a, b) => b[1] - a[1]);
+                sortedPlayers.forEach(([player, count]) => {
+                    const playerItem = document.createElement('li');
+                    playerItem.innerText = `${player}: ${count} votes`;
+                    playerList.appendChild(playerItem);
+                });
+
+                teamDiv.appendChild(playerList);
+                publicResults.appendChild(teamDiv);
+            });
+        }
+
+        updatePublicResults();
+
+        voteForms.forEach(form => {
+            form.addEventListener('change', () => {
+                const selectedPlayers = Array.from(form.querySelectorAll('input[name="player"]:checked'));
+                
+                if (selectedPlayers.length >= 4) {
+                    // Disable all unchecked checkboxes if 4 players are selected
+                    form.querySelectorAll('input[name="player"]:not(:checked)').forEach(checkbox => {
+                        checkbox.disabled = true; // Disable unselected checkboxes
+                    });
+                } else {
+                    // Enable all checkboxes if less than 4 are selected
+                    form.querySelectorAll('input[name="player"]').forEach(checkbox => {
+                        checkbox.disabled = false; // Enable all checkboxes
+                    });
+                }
+            });
+
+            form.addEventListener('submit', event => {
+                event.preventDefault();
+                const team = form.getAttribute('data-team');
+                const selectedPlayers = Array.from(form.querySelectorAll('input[name="player"]:checked')).map(input => input.value);
+
+                if (userVotes[team]) {
+                    alert(`You have already voted for ${team}.`);
+                    return;
+                }
+
+                if (selectedPlayers.length !== 4) {
+                    alert('You must select exactly 4 players.');
+                    return;
+                }
+
+                // Disable the selected players in other teams
+                selectedPlayers.forEach(player => {
+                    voteForms.forEach(innerForm => {
+                        if (innerForm !== form) {
+                            const checkboxes = innerForm.querySelectorAll(`input[name="player"]`);
+                            checkboxes.forEach(checkbox => {
+                                if (checkbox.value === player) {
+                                    checkbox.disabled = true; // Disable this player in other teams
+                                }
+                            });
+                        }
+                    });
+                });
+
+                if (!votes[team]) {
+                    votes[team] = {};
+                }
+
+                selectedPlayers.forEach(player => {
+                    if (!votes[team][player]) {
+                        votes[team][player] = 0;
+                    }
+                    votes[team][player] += 1;
+                });
+
+                userVotes[team] = true;
+
+                localStorage.setItem('votes', JSON.stringify(votes));
+                localStorage.setItem('userVotes', JSON.stringify(userVotes));
+
+                updatePublicResults();
+
+                alert(`Your votes for ${team} have been submitted!`);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
