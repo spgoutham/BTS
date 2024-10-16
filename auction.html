@@ -47,35 +47,23 @@
             color: #ffcccb;
         }
 
-        
-input[type="checkbox"] {
-    transform: scale(1.5); /* Make checkboxes bigger */
-    margin-right: 10px; /* Space between checkbox and label text */
-}
+        input[type="checkbox"] {
+            transform: scale(1.5);
+            margin-right: 10px;
+        }
 
-	.team-section label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
 
-.checkbox-group {
-    display: flex;
-    flex-direction: column; /* Stack checkboxes vertically */
-    align-items: center; /* Center align the items */
-    margin-bottom: 10px; /* Space below the group */
-}
-
-
-.checkbox-group input[type="checkbox"] {
-    margin: 5px 10px 5px 0; /* Adjust margin as needed */
-}
-
-.checkbox-label {
-    display: block; /* Ensure each label takes a full line */
-    margin-bottom: 10px; /* Space between players */
-    text-align: center; /* Center align the text */
-}
+        .checkbox-label {
+            display: block;
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
         button {
             display: inline-block;
@@ -89,51 +77,6 @@ input[type="checkbox"] {
             transition: background-color 0.3s ease;
             margin-top: 10px;
         }
-	.public-results {
-    margin-top: 30px;
-    padding: 15px;
-    background: #1e1e1e;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.public-results h2 {
-    margin: 0 0 15px 0;
-    font-size: 1.8rem;
-    color: #ff6347;
-}
-
-.team-results {
-    margin-bottom: 20px;
-    padding: 10px;
-    background: #2a2a2a;
-    border-radius: 5px;
-}
-
-.team-results h3 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #ffcccb;
-}
-
-.team-results p {
-    margin: 5px 0;
-    color: #f0e68c;
-    font-size: 1rem;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul li {
-    margin: 5px 0;
-    padding: 5px;
-    background: #1e1e1e;
-    border-radius: 4px;
-}
-
 
         button:hover {
             background-color: #ff4500;
@@ -141,38 +84,41 @@ ul li {
 
         .public-results {
             margin-top: 30px;
+            padding: 15px;
+            background: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .public-results h3 {
+        .public-results h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.8rem;
             color: #ff6347;
         }
 
-        .public-results p {
-            margin-left: 20px;
-            font-size: 1rem;
-            color: #f0e68c;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            text-align: center;
-        }
-
-        th, td {
+        .team-results {
+            margin-bottom: 20px;
             padding: 10px;
-            border: 1px solid #ff6347;
-            font-size: 1rem;
+            background: #2a2a2a;
+            border-radius: 5px;
         }
 
-        th {
-            background-color: #ff6347;
-            color: #000;
+        .team-results h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #ffcccb;
         }
 
-        td {
-            background-color: #1e1e1e;
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 5px 0;
+            padding: 5px;
+            background: #1e1e1e;
+            border-radius: 4px;
         }
 
         @media (max-width: 600px) {
@@ -191,254 +137,132 @@ ul li {
             h3 {
                 font-size: 1rem;
             }
-
-            table th, table td {
-                font-size: 0.85rem;
-            }
         }
     </style>
 </head>
 <body>
     <h1>BTS Auction - Vote for Players</h1>
 
-    <div id="auction-section">
-        <script>
-            const players = [
-                "Punk og", "Choco", "Eswa", "Jeeva", "Cloud empire",
-                "Goat is live", "Rush god", "Raasu live", "Tom plays",
-                "Jordan", "Sky op", "Netlag", "Survival", "Ishaan",
-                "Dora op", "Naresh", "Capsun", "Dominic"
-            ];
-
-            function createPlayerCheckboxes(usedPlayers = []) {
-                return `
-    <div class="checkbox-group">
-        ${players.map(player => `
-            <label class="checkbox-label">
-                <input type="checkbox" name="player" value="${player}" ${usedPlayers.includes(player) ? 'disabled' : ''}>
-                ${player}
-            </label>
-        `).join('')}
-    </div>
-`;
-
-            }
-
-            const teams = ['JBTS', 'FIRE BTS', 'SOBTS', 'DANGERBTS', 'KILLERBTS'];
-            const auctionSection = document.getElementById('auction-section');
-
-            teams.forEach(team => {
-                auctionSection.innerHTML += `
-                    <div class="team-section">
-                        <h2>${team}</h2>
-                        <form class="vote-form" data-team="${team}">
-                            <label>Select up to 4 players:</label><br>
-                            ${createPlayerCheckboxes()}
-                            <button type="submit">Submit Vote</button>
-                        </form>
-                    </div>
-                `;
-            });
-        </script>
-    </div>
+    <div id="auction-section"></div>
 
     <div id="public-results" class="public-results">
         <h2>Public Voting Results</h2>
     </div>
-<script>
-	// In your HTML script for submitting votes
-form.addEventListener('submit', event => {
-    event.preventDefault();
-    const team = form.getAttribute('data-team');
-    const selectedPlayers = Array.from(form.querySelectorAll('input[name="player"]:checked')).map(input => input.value);
 
-    // Adjusted validation for 2 to 4 players
-    if (selectedPlayers.length < 2 || selectedPlayers.length > 4) {
-        alert('You must select between 2 and 4 players.');
-        return;
-    }
+    <script>
+        const players = [
+            "Punk og", "Choco", "Eswa", "Jeeva", "Cloud empire",
+            "Goat is live", "Rush god", "Raasu live", "Tom plays",
+            "Jordan", "Sky op", "Netlag", "Survival", "Ishaan",
+            "Dora op", "Naresh", "Capsun", "Dominic"
+        ];
 
-    // Send the vote to the serverless function
-    fetch('/api/votes', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ team, players: selectedPlayers }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Vote submitted:', data);
-        updatePublicResults(); // Update results from server
-        alert(`Your votes for ${team} have been submitted!`);
-    })
-    .catch((error) => {
-        console.error('Error submitting vote:', error);
-    });
-});
+        const teams = ['JBTS', 'FIRE BTS', 'SOBTS', 'DANGERBTS', 'KILLERBTS'];
+        const auctionSection = document.getElementById('auction-section');
 
-// Function to retrieve and display results
-function updatePublicResults() {
-    fetch('/api/results')
-        .then(response => response.json())
-        .then(data => {
-            // Update your public results display
-            publicResults.innerHTML = ''; // Clear previous results
-            Object.keys(data).forEach(team => {
-                const teamDiv = document.createElement('div');
-                teamDiv.classList.add('team-results');
-
-                const teamHeader = document.createElement('h3');
-                teamHeader.innerText = team;
-                teamDiv.appendChild(teamHeader);
-
-                const playerList = document.createElement('ul');
-                const sortedPlayers = Object.entries(data[team]).sort((a, b) => b[1] - a[1]);
-                sortedPlayers.forEach(([player, count]) => {
-                    const playerItem = document.createElement('li');
-                    playerItem.innerText = `${player}: ${count} votes`;
-                    playerList.appendChild(playerItem);
-                });
-
-                teamDiv.appendChild(playerList);
-                publicResults.appendChild(teamDiv);
-            });
-        })
-        .catch((error) => {
-            console.error('Error retrieving results:', error);
+        teams.forEach(team => {
+            auctionSection.innerHTML += `
+                <div class="team-section">
+                    <h2>${team}</h2>
+                    <form class="vote-form" data-team="${team}">
+                        <label>Select up to 4 players:</label><br>
+                        <div class="checkbox-group">
+                            ${players.map(player => `
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="player" value="${player}">
+                                    ${player}
+                                </label>
+                            `).join('')}
+                        </div>
+                        <button type="submit">Submit Vote</button>
+                    </form>
+                </div>
+            `;
         });
-}
-    document.addEventListener('DOMContentLoaded', () => {
-        const voteForms = document.querySelectorAll('.vote-form');
-        const publicResults = document.getElementById('public-results');
 
-        const votes = JSON.parse(localStorage.getItem('votes')) || {};
-        const userVotes = JSON.parse(localStorage.getItem('userVotes')) || {};
+        document.addEventListener('DOMContentLoaded', () => {
+            const voteForms = document.querySelectorAll('.vote-form');
+            const publicResults = document.getElementById('public-results');
 
-        function updatePublicResults() {
-            publicResults.innerHTML = '';
-            const sortedTeams = Object.keys(votes).sort((a, b) => {
-                return Object.values(votes[b]).reduce((a, b) => a + b, 0) - Object.values(votes[a]).reduce((a, b) => a + b, 0);
-            });
+            const votes = JSON.parse(localStorage.getItem('votes')) || {};
+            const userVotes = JSON.parse(localStorage.getItem('userVotes')) || {};
 
-            sortedTeams.forEach(team => {
-                const teamDiv = document.createElement('div');
-                teamDiv.classList.add('team-results');
+            function updatePublicResults() {
+                publicResults.innerHTML = '';
+                Object.keys(votes).forEach(team => {
+                    const teamDiv = document.createElement('div');
+                    teamDiv.classList.add('team-results');
 
-                const teamHeader = document.createElement('h3');
-                teamHeader.innerText = team;
-                teamDiv.appendChild(teamHeader);
+                    const teamHeader = document.createElement('h3');
+                    teamHeader.innerText = team;
+                    teamDiv.appendChild(teamHeader);
 
-                const playerList = document.createElement('ul');
-                const sortedPlayers = Object.entries(votes[team]).sort((a, b) => b[1] - a[1]);
-                sortedPlayers.forEach(([player, count]) => {
-                    const playerItem = document.createElement('li');
-                    playerItem.innerText = `${player}: ${count} votes`;
-                    playerList.appendChild(playerItem);
+                    const playerList = document.createElement('ul');
+                    const sortedPlayers = Object.entries(votes[team]).sort((a, b) => b[1] - a[1]);
+                    sortedPlayers.forEach(([player, count]) => {
+                        const playerItem = document.createElement('li');
+                        playerItem.innerText = `${player}: ${count} votes`;
+                        playerList.appendChild(playerItem);
+                    });
+
+                    teamDiv.appendChild(playerList);
+                    publicResults.appendChild(teamDiv);
                 });
+            }
 
-                teamDiv.appendChild(playerList);
-                publicResults.appendChild(teamDiv);
-            });
-        }
-
-        function updateCheckboxes() {
-            const allCheckedPlayers = [];
-            voteForms.forEach(form => {
-                const selectedPlayers = Array.from(form.querySelectorAll('input[name="player"]:checked'));
-                allCheckedPlayers.push(...selectedPlayers.map(input => input.value));
-            });
+            updatePublicResults();
 
             voteForms.forEach(form => {
-                form.querySelectorAll('input[name="player"]').forEach(checkbox => {
-                    if (allCheckedPlayers.includes(checkbox.value) && !checkbox.checked) {
-                        checkbox.disabled = true; // Disable if player is selected in any other team
-                    } else {
-                        checkbox.disabled = false; // Enable if not selected
+                form.addEventListener('submit', event => {
+                    event.preventDefault();
+                    const team = form.getAttribute('data-team');
+                    const selectedPlayers = Array.from(form.querySelectorAll('input[name="player"]:checked')).map(input => input.value);
+
+                    if (userVotes[team]) {
+                        alert(`You have already voted for ${team}.`);
+                        return;
                     }
-                });
-            });
-        }
 
-        updatePublicResults();
+                    if (selectedPlayers.length < 2 || selectedPlayers.length > 4) {
+                        alert('You must select between 2 and 4 players.');
+                        return;
+                    }
 
-        voteForms.forEach(form => {
-            form.addEventListener('change', () => {
-                const selectedPlayers = Array.from(form.querySelectorAll('input[name="player"]:checked'));
-
-                if (selectedPlayers.length >= 4) {
-                    // Disable all unchecked checkboxes if 4 players are selected
-                    form.querySelectorAll('input[name="player"]:not(:checked)').forEach(checkbox => {
-                        checkbox.disabled = true; // Disable unselected checkboxes
+                    // Disable the selected players in other teams
+                    selectedPlayers.forEach(player => {
+                        voteForms.forEach(innerForm => {
+                            if (innerForm !== form) {
+                                const checkboxes = innerForm.querySelectorAll(`input[name="player"]`);
+                                checkboxes.forEach(checkbox => {
+                                    if (checkbox.value === player) {
+                                        checkbox.disabled = true; // Disable this player in other teams
+                                    }
+                                });
+                            }
+                        });
                     });
-                } else {
-                    // Enable all checkboxes if less than 4 are selected
-                    form.querySelectorAll('input[name="player"]').forEach(checkbox => {
-                        checkbox.disabled = false; // Enable all checkboxes
-                    });
-                }
 
-                // Update all checkbox states
-                updateCheckboxes();
-            });
+                    if (!votes[team]) {
+                        votes[team] = {};
+                    }
 
-            form.addEventListener('submit', event => {
-                event.preventDefault();
-                const team = form.getAttribute('data-team');
-                const selectedPlayers = Array.from(form.querySelectorAll('input[name="player"]:checked')).map(input => input.value);
-
-                if (userVotes[team]) {
-                    alert(`You have already voted for ${team}.`);
-                    return;
-                }
-
-                // Adjusted validation for 2 to 4 players
-                if (selectedPlayers.length < 2 || selectedPlayers.length > 4) {
-                    alert('You must select between 2 and 4 players.');
-                    return;
-                }
-
-                selectedPlayers.forEach(player => {
-                    voteForms.forEach(innerForm => {
-                        if (innerForm !== form) {
-                            const checkboxes = innerForm.querySelectorAll(`input[name="player"]`);
-                            checkboxes.forEach(checkbox => {
-                                if (checkbox.value === player) {
-                                    checkbox.disabled = true; // Disable this player in other teams
-                                }
-                            });
+                    selectedPlayers.forEach(player => {
+                        if (!votes[team][player]) {
+                            votes[team][player] = 0;
                         }
+                        votes[team][player] += 1;
                     });
+
+                    userVotes[team] = true;
+
+                    localStorage.setItem('votes', JSON.stringify(votes));
+                    localStorage.setItem('userVotes', JSON.stringify(userVotes));
+
+                    updatePublicResults();
+                    alert(`Your votes for ${team} have been submitted!`);
                 });
-
-                if (!votes[team]) {
-                    votes[team] = {};
-                }
-
-                selectedPlayers.forEach(player => {
-                    if (!votes[team][player]) {
-                        votes[team][player] = 0;
-                    }
-                    votes[team][player] += 1;
-                });
-
-                userVotes[team] = true;
-
-                localStorage.setItem('votes', JSON.stringify(votes));
-                localStorage.setItem('userVotes', JSON.stringify(userVotes));
-
-                updatePublicResults();
-
-                alert(`Your votes for ${team} have been submitted!`);
             });
         });
-
-        // Update checkbox states on page load
-        updateCheckboxes();
-    });
-</script>
-
-
-
+    </script>
 </body>
 </html>
