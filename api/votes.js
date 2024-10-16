@@ -1,7 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.join(process.cwd(), 'data', 'votes.json'); // Adjust path as needed
+const filePath = path.join(process.cwd(), 'data', 'votes.json');
+
+// Check if votes.json exists; if not, create it with an empty object
+if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, JSON.stringify({}), 'utf-8');
+}
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
