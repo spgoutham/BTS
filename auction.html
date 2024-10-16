@@ -330,8 +330,9 @@ ul li {
                     return;
                 }
 
-                if (selectedPlayers.length !== 4) {
-                    alert('You must select exactly 4 players.');
+                // Adjusted validation for 2 to 4 players
+                if (selectedPlayers.length < 2 || selectedPlayers.length > 4) {
+                    alert('You must select between 2 and 4 players.');
                     return;
                 }
 
