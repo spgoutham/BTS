@@ -1,33 +1,54 @@
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.join(process.cwd(), 'data', 'votes.json');
+const votesFilePath = path.join(__dirname, '../data/votes.json');
 
-// Check if votes.json exists; if not, create it with an empty object
-if (!fs.existsSync(filePath)) {
-    fs.writeFileSync(filePath, JSON.stringify({}), 'utf-8');
-}
+// Function to read votes from votes.json
+const readVotes = () => {
+    try {
+        const data = fs.readFileSync(votesFilePath, 'utf8');
+        return JSON.parse(data);
+    } catch (error) {
+        console.error('Error reading votes:', error);
+        return {};
+    }
+};
 
-export default async function handler(req, res) {
+// Function to write votes to votes.json
+const writeVotes = (votes) => {
+    try {
+        fs.writeFileSync(votesFilePath, JSON.stringify(votes, null, 2));
+    } catch (error) {
+        console.error('Error writing votes:', error);
+    }
+};
+
+module.exports = async (req, res) => {
     if (req.method === 'POST') {
-        const newVote = req.body; // Expected to be { team: 'Team Name', players: ['Player1', 'Player2'] }
+        const { team, players } = req.body;
 
-        // Read existing votes
-        const votes = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+        // Read current votes from the file
+        const votes = readVotes();
 
-        // Update votes
-        if (!votes[newVote.team]) {
-            votes[newVote.team] = {};
+        // Initialize team if it doesn't exist
+        if (!votes[team]) {
+            votes[team] = {};
         }
-        newVote.players.forEach(player => {
-            votes[newVote.team][player] = (votes[newVote.team][player] || 0) + 1;
+
+        // Increment the vote count for each selected player
+        players.forEach(player => {
+            if (!votes[team][player]) {
+                votes[team][player] = 0;
+            }
+            votes[team][player] += 1;
         });
 
-        // Save updated votes back to file
-        fs.writeFileSync(filePath, JSON.stringify(votes, null, 2));
-        res.status(200).json({ success: true, votes });
+        // Save the updated votes back to votes.json
+        writeVotes(votes);
+
+        res.status(200).json({ message: 'Vote submitted successfully!' });
     } else {
         res.setHeader('Allow', ['POST']);
         res.status(405).end(`Method ${req.method} Not Allowed`);
     }
-}
+};
