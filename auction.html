@@ -304,20 +304,14 @@ ul li {
             form.addEventListener('change', () => {
                 const selectedPlayers = Array.from(form.querySelectorAll('input[name="player"]:checked'));
 
-                if (selectedPlayers.length >= 4) {
-                    // Disable all unchecked checkboxes if 4 players are selected
-                    form.querySelectorAll('input[name="player"]:not(:checked)').forEach(checkbox => {
-                        checkbox.disabled = true; // Disable unselected checkboxes
-                    });
-                } else {
-                    // Enable all checkboxes if less than 4 are selected
-                    form.querySelectorAll('input[name="player"]').forEach(checkbox => {
-                        checkbox.disabled = false; // Enable all checkboxes
-                    });
-                }
-
-                // Update all checkbox states
-                updateCheckboxes();
+                // Disable checkboxes based on selected count
+                form.querySelectorAll('input[name="player"]').forEach(checkbox => {
+                    if (selectedPlayers.length >= 4 && !checkbox.checked) {
+                        checkbox.disabled = true; // Disable if already selected 4 players
+                    } else {
+                        checkbox.disabled = false; // Enable all if less than 4 are selected
+                    }
+                });
             });
 
             form.addEventListener('submit', event => {
