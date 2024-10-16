@@ -246,6 +246,68 @@ ul li {
         <h2>Public Voting Results</h2>
     </div>
 <script>
+	// In your HTML script for submitting votes
+form.addEventListener('submit', event => {
+    event.preventDefault();
+    const team = form.getAttribute('data-team');
+    const selectedPlayers = Array.from(form.querySelectorAll('input[name="player"]:checked')).map(input => input.value);
+
+    // Adjusted validation for 2 to 4 players
+    if (selectedPlayers.length < 2 || selectedPlayers.length > 4) {
+        alert('You must select between 2 and 4 players.');
+        return;
+    }
+
+    // Send the vote to the serverless function
+    fetch('/api/votes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ team, players: selectedPlayers }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Vote submitted:', data);
+        updatePublicResults(); // Update results from server
+        alert(`Your votes for ${team} have been submitted!`);
+    })
+    .catch((error) => {
+        console.error('Error submitting vote:', error);
+    });
+});
+
+// Function to retrieve and display results
+function updatePublicResults() {
+    fetch('/api/results')
+        .then(response => response.json())
+        .then(data => {
+            // Update your public results display
+            publicResults.innerHTML = ''; // Clear previous results
+            Object.keys(data).forEach(team => {
+                const teamDiv = document.createElement('div');
+                teamDiv.classList.add('team-results');
+
+                const teamHeader = document.createElement('h3');
+                teamHeader.innerText = team;
+                teamDiv.appendChild(teamHeader);
+
+                const playerList = document.createElement('ul');
+                const sortedPlayers = Object.entries(data[team]).sort((a, b) => b[1] - a[1]);
+                sortedPlayers.forEach(([player, count]) => {
+                    const playerItem = document.createElement('li');
+                    playerItem.innerText = `${player}: ${count} votes`;
+                    playerList.appendChild(playerItem);
+                });
+
+                teamDiv.appendChild(playerList);
+                publicResults.appendChild(teamDiv);
+            });
+        })
+        .catch((error) => {
+            console.error('Error retrieving results:', error);
+        });
+}
     document.addEventListener('DOMContentLoaded', () => {
         const voteForms = document.querySelectorAll('.vote-form');
         const publicResults = document.getElementById('public-results');
